@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 function Registro() {
 
-    const [usuario, setUsuario] = useState("");
+    const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [contra, setContra] = useState("");
     const [contConf, setContConf] = useState("");
@@ -25,37 +25,33 @@ function Registro() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    usuario,
+                    nombre,
                     email,
-                    contraseña: contra,
-                    rol: "solo_lectura"
+                    password_hash: contra,  // el backend hashea internamente
+                    rol: "solo_lectura"         // rol por defecto para registro público
                 })
             });
 
             if (!response.ok) {
                 const errorData = await response.json();
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: `Error al registrar usuario: ${errorData}`
-                });
-                return;
+                throw new Error(errorData.mensaje || "Error al registrar usuario");
             }
 
             await response.json();
 
             Swal.fire({
                 icon: "success",
-                title: "Usuario registrado correctamente!",
-                text: `Tu cuenta ha sido creada correctamente ${usuario}`
+                title: "¡Registro exitoso!",
+                text: "Tu cuenta ha sido creada correctamente"
             });
 
-            setUsuario("");
+            setNombre("");
             setEmail("");
             setContra("");
             setContConf("");
 
         } catch (error) {
+            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             Swal.fire({
                 icon: "error",
                 title: "Error",
@@ -67,8 +63,8 @@ function Registro() {
     return (
         <div>
             <h3>Registro</h3>
-            <label htmlFor="usuario">Nombre de usuario</label>
-            <input id="usuario" type="text" value={usuario} onChange={(e) => setUsuario(e.target.value)} />
+            <label htmlFor="nombre">Nombre</label>
+            <input id="nombre" type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
             <br />
             <label htmlFor="email">Correo</label>
             <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />

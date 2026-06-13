@@ -1,35 +1,39 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Inicio from './pages/Inicio/Inicio';
-import Contacto from './pages/Contacto/Contacto';
-import Login from './pages/Login/Login';
-import Registro from './pages/Registro/Registro';
+import NotFound from './pages/NotFound/NotFound';
+
+// Lazy loading para las demás páginas
+const Contacto = lazy(() => import('./pages/Contacto/Contacto'));
+const Login = lazy(() => import('./pages/Login/Login'));
+const Registro = lazy(() => import('./pages/Registro/Registro'));
 
 function App() {
-
 	return (
+		<>
 		<BrowserRouter>
+			<Header />
 
-			<nav>
-				<Link to="/">Inicio</Link> | { }
-				{/*<Link to="/login">Productos</Link> |*/}
-				<Link to="/contacto">Contacto</Link> | { }
-				{/*<Link to="/login">Marcas</Link> |
-				<Link to="/">Promociones</Link> |*/}
-				<Link to="/registro">Registro</Link> | { }
-				<Link to="/login">Ingresar</Link> 
-			</nav>
+			<main>
+				<Suspense fallback={<p>Cargando...</p>}>
+					<Routes>
+						<Route path="/" element={<Inicio />} />
+						<Route path="/contacto" element={<Contacto />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/registro" element={<Registro />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</Suspense>
+			</main>
 
-			<Routes>
-				<Route path="/" element={<Inicio />} />
-				<Route path="/registro" element={<Registro />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/contacto" element={<Contacto />} /> 
-			</Routes>
-
+			<Footer />
 		</BrowserRouter>
-	)
+		</>
+	);
 }
 
-export default App
+export default App;

@@ -1,0 +1,30 @@
+.footer {
+    background-color: #1a2a3a;
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}

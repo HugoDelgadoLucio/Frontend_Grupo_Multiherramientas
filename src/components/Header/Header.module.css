@@ -1,0 +1,49 @@
+.encabezado {
+	background-color: #d6d7cd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	border-bottom: 5px solid #002b6f;
+	h1 {
+		color: #002b6f;
+		margin: 0 50px;
+	}
+}
+.equipo {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	font-weight: 700;
+}
+.pumas {
+	color: #111646;
+}
+.azul {
+	color: #2838ca;
+}
+.colorEq {
+	width: 30px;
+	height: 30px;
+}
+#pum {
+	background-color: #948d2f;
+	border: 2px solid #111646;
+	&:hover {
+		background-color: #111646;
+		border-color: #948d2f;
+	}
+}
+#caz {
+	background-color: #2838ca;
+	border: 2px solid #fff;
+	&:hover {
+		background-color: #fff;
+		border-color: #2838ca;
+	}
+}
+.imgAzul {
+	background-color: #fff;
+	height: 29px;
+	width: 60px;
+}

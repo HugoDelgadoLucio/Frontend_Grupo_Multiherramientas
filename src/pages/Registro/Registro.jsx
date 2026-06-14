@@ -27,8 +27,8 @@ function Registro() {
                 body: JSON.stringify({
                     nombre,
                     email,
-                    password_hash: contra,  // el backend hashea internamente
-                    rol: "solo_lectura"         // rol por defecto para registro público
+                    password_hash: contra, 
+                    rol: "solo_lectura" 
                 })
             });
 

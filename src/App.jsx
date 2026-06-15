@@ -14,6 +14,9 @@ const Login = lazy(() => import('./pages/Login/Login'));
 const Registro = lazy(() => import('./pages/Registro/Registro'));
 const Productos = lazy(() => import('./pages/Productos/Productos'));
 const PanelAdmin = lazy(() => import("./pages/PanelAdmin/PanelAdmin"));
+const CatalogoAdmin = lazy(() => import("./pages/CatalogoAdmin/CatalogoAdmin"));
+const EliminarProducto = lazy(() => import("./pages/EliminarProducto/EliminarProducto"));
+const RegistrarProducto = lazy(() => import("./pages/RegistrarProducto/RegistrarProducto"));
 
 function App() {
 	return (
@@ -33,7 +36,11 @@ function App() {
 								<ProtectedRoute>
 									<PanelAdmin />
 								</ProtectedRoute>
-							} />
+							}>
+								<Route path="catalogo" element={<CatalogoAdmin />} />
+								<Route path="eliminar" element={<EliminarProducto />} />
+								<Route path="registrar" element={<RegistrarProducto />} />
+							</Route>
 							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</Suspense>

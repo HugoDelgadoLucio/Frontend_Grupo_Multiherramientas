@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useProductos = (categoriaFiltro = "", marcaFiltro = "") => {
+const useProductos = (categoriaFiltro = "", marcaFiltro = "", soloActivos = false) => {
     const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -15,7 +15,14 @@ const useProductos = (categoriaFiltro = "", marcaFiltro = "") => {
             try {
                 let response;
 
-                if (marcaFiltro) {
+                if (soloActivos) {
+                    response = await fetch(
+                        "http://localhost:3000/productos/activos",
+                        {
+                            signal: controller.signal
+                        }
+                    );
+                } else if (marcaFiltro) {
                     response = await fetch("http://localhost:3000/productos/productosMarca", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -54,7 +61,7 @@ const useProductos = (categoriaFiltro = "", marcaFiltro = "") => {
 
         fetchProductos();
         return () => controller.abort();
-    }, [categoriaFiltro, marcaFiltro]);
+    }, [categoriaFiltro, marcaFiltro, soloActivos]);
 
     return { productos, loading, error };
 };

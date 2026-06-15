@@ -1,9 +1,11 @@
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../../context/useAuth";
 
 function ProtectedRoute({ children }) {
-    const rol = localStorage.getItem("rol");
 
-    if (rol !== "admin") {
+    const { usuario } = useAuth();
+
+    if (usuario.rol !== "admin") {
         return <Navigate to="/" replace />;
     }
 

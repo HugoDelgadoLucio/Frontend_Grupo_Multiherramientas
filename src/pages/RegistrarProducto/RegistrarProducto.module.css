@@ -1,0 +1,86 @@
+/* RegistrarProducto.module.css */
+
+.titulo {
+    color: #1a2e4a;
+    font-size: 1.4rem;
+    border-left: 4px solid #e63030;
+    padding-left: 10px;
+    margin-bottom: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 560px;
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a2e4a;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.inputBase {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: #fff;
+    color: #1a2e4a;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.inputBase:focus {
+    border-color: #254a7e;
+}
+
+textarea.inputBase {
+    height: 100px;
+    resize: vertical;
+}
+
+.seccion {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btnSubmit {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #1a2e4a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.btnSubmit:hover {
+    background: #e63030;
+}

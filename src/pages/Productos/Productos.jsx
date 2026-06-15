@@ -1,5 +1,6 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import useProductos from "../../hooks/useProductos";
+import styles from "./Productos.module.css"
 
 function Productos() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -11,7 +12,7 @@ function Productos() {
     const { productos, loading, error } = useProductos(categoriaParam, marcaParam);
 
     return (
-        <div>
+        <div className={styles.ProductBase}>
             <h2>Catálogo de Productos</h2>
 
             {/* Filtros activos */}
@@ -35,14 +36,14 @@ function Productos() {
                         <p>No se encontraron productos.</p>
                     ) : (
                         productos.map(producto => (
-                            <div
+                            <div className={styles.ProductCard}
                                 key={producto.id}
                                 onClick={() => navigate(`/productos/${producto.id}`)}
-                                style={{ cursor: "pointer", border: "1px solid #ccc", margin: "8px", padding: "8px" }}
+                                
                             >
                                 <h4>{producto.nombre}</h4>
                                 <p>{producto.descripcion}</p>
-                                <p><strong>${producto.precio}</strong></p>
+                                <p className={styles.priceCard}><strong>${producto.precio}</strong></p>
                             </div>
                         ))
                     )}

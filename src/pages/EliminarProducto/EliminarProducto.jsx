@@ -1,13 +1,10 @@
 import Swal from "sweetalert2";
 import useProductos from "../../hooks/useProductos";
+import styles from "./EliminarProducto.module.css";
 
 function EliminarProducto() {
 
-    const {
-        productos,
-        loading,
-        error
-    } = useProductos("", "", true);
+    const { productos, loading, error } = useProductos("", "", true);
 
     const eliminar = async (id) => {
 
@@ -18,102 +15,50 @@ function EliminarProducto() {
             showCancelButton: true
         });
 
-        if (!confirmar.isConfirmed)
-            return;
+        if (!confirmar.isConfirmed) return;
 
         try {
 
-            const response =
-                await fetch(
-                    "http://localhost:3000/productos/eliminarLogico",
-                    {
-                        method: "DELETE",
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-                        body: JSON.stringify({
-                            id
-                        })
-                    }
-                );
-
-            const data =
-                await response.json();
-
-            if (!response.ok)
-                throw new Error(
-                    data.mensaje
-                );
-
-            await Swal.fire({
-                icon: "success",
-                title: "Producto eliminado"
+            const response = await fetch("http://localhost:3000/productos/eliminarLogico", {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id })
             });
+
+            const data = await response.json();
+
+            if (!response.ok) throw new Error(data.mensaje);
+
+            await Swal.fire({ icon: "success", title: "Producto eliminado" });
 
             window.location.reload();
 
-        }
-        catch (error) {
-
-            Swal.fire({
-                icon: "error",
-                title: error.message
-            });
+        } catch (error) {
+            Swal.fire({ icon: "error", title: error.message });
         }
     };
 
-    if (loading)
-        return <p>Cargando...</p>;
-
-    if (error)
-        return <p>{error}</p>;
+    if (loading) return <p className={styles.estado}>Cargando...</p>;
+    if (error) return <p className={styles.estado}>{error}</p>;
 
     return (
         <div>
+            <h2 className={styles.titulo}>Eliminar Producto</h2>
 
-            <h2>
-                Eliminar Producto
-            </h2>
-
-            {
-                productos.map(producto => (
-
-                    <div
-                        key={producto.id}
-                        style={{
-                            border:
-                                "1px solid red",
-                            margin:
-                                "10px",
-                            padding:
-                                "10px"
-                        }}
-                    >
-
-                        <h4>
-                            {producto.nombre}
-                        </h4>
-
-                        <p>
-                            {producto.id}
-                        </p>
-
+            {productos.map(producto => (
+                <div className={styles.ProductCard} key={producto.id}>
+                    <h4>{producto.nombre}</h4>
+                    <div className={styles.cardFooter}>
+                        <span className={styles.idTag}>ID: {producto.id}</span>
                         <button
-                            onClick={() =>
-                                eliminar(
-                                    producto.id
-                                )
-                            }
+                            className={styles.btnEliminar}
+                            onClick={() => eliminar(producto.id)}
                         >
                             Eliminar
                         </button>
-
                     </div>
-
-                ))
-            }
-
+                </div>
+            ))}
         </div>
     );
 }

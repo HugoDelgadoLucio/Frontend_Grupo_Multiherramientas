@@ -1,0 +1,78 @@
+.loginBackground{
+background-image: url("public/HerramientaBackground2.jpg");
+overflow: hidden;
+background-size: cover;
+ width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginInput{
+    width: 600px;
+    height: 600px;
+
+color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+
+    background: rgba(26,46,74,0.25);
+    backdrop-filter: blur(10px);    
+ border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+}
+
+h3{
+    font-size: 2rem;
+    margin-bottom: 60px;
+    
+}
+
+label{
+    font-size: 1.3rem;
+    padding: 10px;
+    
+}
+
+button{
+    margin-top: 15px;
+    width: 350px;
+    background-color: #1a2e4a;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover{
+    border: solid 2px #1a2e4a;
+    background-color: white;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 350px;
+    margin-bottom: 16px;
+}
+
+.campo input {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.campo input:focus {
+    border-color: #e63030;
+}

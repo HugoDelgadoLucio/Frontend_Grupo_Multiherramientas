@@ -1,0 +1,58 @@
+/* PanelAdmin.module.css */
+
+.adminBase {
+    width: 60%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.adminBase h1 {
+    color: #1a2e4a;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    border-left: 4px solid #e63030;
+    padding-left: 10px;
+}
+
+.adminBase p {
+    color: #555;
+    margin: 0 0 16px 0;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 12px 0;
+}
+
+.adminNav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.navLink {
+    color: #254a7e;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.navLink:hover {
+    background: #1a2e4a;
+    color: white;
+}
+
+.navLinkActive {
+    background: #e63030;
+    color: white;
+}
+
+.adminContent {
+    margin-top: 24px;
+}

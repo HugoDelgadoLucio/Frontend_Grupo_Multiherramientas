@@ -1,3 +1,70 @@
 #map {
   height: 100%;
 }
+
+.StartContenedor{
+width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #e63030;
+}
+
+.MarcaSeccion{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: #F4F4F4;
+  gap: 15px;
+  padding: 25px;
+  border-bottom: solid 1px #D1D5DB;
+}
+
+.MarcaSeccion h2 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.MarcaSeccion button {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.CategoriaSeccion{
+  width: 100%;
+  
+}
+
+.CategoriaAcomodo{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 35px;
+  height: 65px;
+  margin-bottom: 0px;
+  color: black;
+}
+
+.CategoriaAcomodo::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 2%;
+    width: 89.3%;
+    height: 2px;
+    background: #D1D5DB;
+}
+
+.CategoriaAcomodo button{
+  border: none;
+  background-color: transparent;
+  color: #e63030;
+}
+
+.noHover:hover {
+  background: initial;
+  color: initial;
+  transform: none;
+  box-shadow: none;
+  border: none;
+}

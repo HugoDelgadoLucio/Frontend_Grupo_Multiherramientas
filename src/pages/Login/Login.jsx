@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import styles from "./Login.module.css";
 import { useAuth } from "../../context/useAuth";
 
 function Login() {
@@ -68,46 +68,34 @@ function Login() {
     }
 
     return (
-        <div>
+    <div className={styles.loginBackground}>
+      <div className={styles.loginInput}>
+        <h3>Login</h3>
 
-            <h3>Login</h3>
-
-            <label htmlFor="correo">
-                Correo
-            </label>
-
-            <input
-                id="correo"
-                type="email"
-                value={correo}
-                onChange={(e) =>
-                    setCorreo(e.target.value)
-                }
-            />
-
-            <br />
-
-            <label htmlFor="contra">
-                Contraseña
-            </label>
-
-            <input
-                id="contra"
-                type="password"
-                value={contra}
-                onChange={(e) =>
-                    setContra(e.target.value)
-                }
-            />
-
-            <br />
-
-            <button onClick={enviar}>
-                Iniciar sesión
-            </button>
-
+        <div className={styles.campo}>
+          <label htmlFor="correo">Correo</label>
+          <input
+            id="correo"
+            type="email"
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
+          />
         </div>
-    );
+
+        <div className={styles.campo}>
+          <label htmlFor="contra">Contraseña</label>
+          <input
+            id="contra"
+            type="password"
+            value={contra}
+            onChange={(e) => setContra(e.target.value)}
+          />
+        </div>
+
+        <button onClick={enviar}>Iniciar sesión</button>
+      </div>
+    </div>
+  );
 }
 
 export default Login;

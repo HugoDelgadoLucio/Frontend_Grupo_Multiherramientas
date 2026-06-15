@@ -1,0 +1,58 @@
+.ProductBase{
+width: 40%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.ProductCard {
+    padding: 20px;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 12px;
+    border: solid 1px #ddd;         
+    background: #fff;
+    transition: all 0.2s ease;      
+}
+
+.ProductCard:hover {
+    border-color: #254a7e;
+    box-shadow: 0 4px 16px rgba(37, 74, 126, 0.15);
+    transform: translateY(-2px);
+}
+
+.priceCard {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: white;
+    background: #e63030;
+    width: fit-content;
+    padding: 4px 14px;
+    border-radius: 20px;
+}
+
+.ProductCard h4{
+    padding-left: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 1.25rem;
+    border-left: 4px solid #e63030
+}
+
+.ProductCard p{
+    margin-bottom: 5px;
+}
+
+.priceCard{
+    margin-top: 15px;
+    font-size: 1.1rem;
+    background: #e63030;
+    width: 75px;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}

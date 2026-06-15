@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import styles from "./Inicio.module.css"
 
 function Inicio() {
 	const navigate = useNavigate();
 
 	return (
-		<div>
-			<section>
+		<div className={styles.StartContenedor}>
+			<section className={styles.MarcaSeccion}>
 				<h2>Marcas</h2>
 				<button onClick={() => navigate("/productos?marca=Bosch")}>Bosch</button>
 				<button onClick={() => navigate("/productos?marca=Makita")}>Makita</button>
@@ -14,10 +15,11 @@ function Inicio() {
 
 			<br />
 
-			<section>
-				<div>
+			<section className={styles.CategoriaSeccion}>
+				<div className={styles.CategoriaAcomodo}>
 					<h3>Categorías</h3>
-					<button onClick={() => navigate("/productos")} style={{ cursor: "pointer" }}>Ver todo</button>
+					<button className={styles.noHover}
+							onClick={() => navigate("/productos")} style={{ cursor: "pointer" }}>Ver todo →</button>
 				</div>
 				<button onClick={() => navigate("/productos?categoria=Herramientas Eléctricas")}>Herr. Eléctricas</button>
 				<button onClick={() => navigate("/productos?categoria=Accesorios")}>Accesorios</button>

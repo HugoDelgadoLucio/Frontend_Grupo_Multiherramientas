@@ -117,7 +117,7 @@ function Contacto() {
                 <FaMapMarkerAlt /> Dirección
               </strong>
               <br />
-              Calle Ejemplo #123, Col. Centro, Aguascalientes, Ags. C.P. 20000
+              Calle Ignacio Zaragoza #123, Col. Centro, Aguascalientes, Ags. C.P. 20000
             </li>
             <li>
               <strong>

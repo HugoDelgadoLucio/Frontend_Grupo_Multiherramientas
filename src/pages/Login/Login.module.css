@@ -76,3 +76,9 @@ button:hover{
 .campo input:focus {
     border-color: #e63030;
 }
+
+.estadoContra{
+    background-color: #e63030;
+    color: #fff;
+    width: 40%;
+}

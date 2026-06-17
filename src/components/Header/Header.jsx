@@ -14,7 +14,7 @@ export default function Header() {
 
 				<div className={styles.marca}>
 					<h1>
-						GRUPO <span>MULTI</span>HERRAMIENTAS
+						GRUPO <span className={styles.titulo}>MULTI</span>HERRAMIENTAS
 					</h1>
 
 					<div className={styles.franja}>
@@ -24,31 +24,31 @@ export default function Header() {
 
 				<nav>
 					<NavLink to="/">Inicio</NavLink>
-					{" | "}
+					{"|"}
 					<NavLink to="/contacto">Contacto</NavLink>
-					{" | "}
+					{"|"}
 					<NavLink to="/productos">Productos</NavLink>
 					{!usuario.token && (
 						<>
-							{" | "}
+							{"|"}
 							<NavLink to="/registro">Registro</NavLink>
-							{" | "}
+							{"|"}
 							<NavLink to="/login">Ingresar</NavLink>
 						</>
 					)}
 
 					{usuario.rol === "admin" && (
 						<>
-							{" | "}
+							{"|"}
 							<NavLink to="/admin">Panel admin</NavLink>
 						</>
 					)}
 
 					{usuario.token && (
 						<>
-							{" | "}
+							{"|"}
 							<span>{usuario.email}</span>
-							{" | "}
+							{"|"}
 							<button onClick={logout}>Cerrar sesión</button>
 						</>
 					)}
@@ -57,26 +57,18 @@ export default function Header() {
 			</div>
 
 			<div className={styles.fila2}>
-
 				<p>
 					Herramientas para{" "}
-					<span className={styles.destacado}>
-						profesionales
-					</span>
+					<span className={styles.destacado}>profesionales</span>
 					<br />
 					Encuentra herramientas eléctricas,
 					accesorios y refacciones de las mejores marcas.
 					<br />
-
 					Consulta precios y disponibilidad en línea
 				</p>
 
 				<div className={styles.buscador}>
-					<input
-						className={styles.input}
-						placeholder="Buscar por modelo, descripción o categoría."
-					/>
-
+					<input className={styles.input} placeholder="Buscar por modelo, descripción o categoría." />
 					<button>
 						<FiSearch />
 						Buscar

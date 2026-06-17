@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css"
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
     return (
@@ -6,11 +7,9 @@ export default function Footer() {
             <div className={styles.contenedor}>
                 <p>©2026 Grupo Multiherramientas · Aguascalientes, Mexico</p>
                 <nav>
-                    <a href="#">Aviso de privacidad</a>
                     <span>|</span>
-                    <a href="#">Contacto</a>
+                    <NavLink to="/contacto">Contacto</NavLink>
                     <span>|</span>
-                    <a href="#">Ubicacion</a>
                 </nav>    
             </div>
             

@@ -26,22 +26,22 @@ function RegistrarProducto() {
 
             const formData = new FormData();
 
-            formData.append("nombre",nombreRef.current.value);
-            formData.append("modelo",modeloRef.current.value);
-            formData.append("descripcion",descripcionRef.current.value);
-            formData.append("precio",precioRef.current.value);
-            formData.append("existencia",existenciaRef.current.value);
-            formData.append("marca",marcaRef.current.value);
-            formData.append("categoria",categoriaRef.current.value);
-            formData.append("pasillo",pasilloRef.current.value);
-            formData.append("estante",estanteRef.current.value);
-            formData.append("charola",charolaRef.current.value);
-            formData.append("cajon",cajonRef.current.value);
-            formData.append("tipo_corriente",tipoCorrienteRef.current.value);
+            formData.append("nombre", nombreRef.current.value);
+            formData.append("modelo", modeloRef.current.value);
+            formData.append("descripcion", descripcionRef.current.value);
+            formData.append("precio", precioRef.current.value);
+            formData.append("existencia", existenciaRef.current.value);
+            formData.append("marca", marcaRef.current.value);
+            formData.append("categoria", categoriaRef.current.value);
+            formData.append("pasillo", pasilloRef.current.value);
+            formData.append("estante", estanteRef.current.value);
+            formData.append("charola", charolaRef.current.value);
+            formData.append("cajon", cajonRef.current.value);
+            formData.append("tipo_corriente", tipoCorrienteRef.current.value);
 
             const archivos = imagenesRef.current.files;
 
-            for(let i = 0; i < archivos.length; i++) {
+            for (let i = 0; i < archivos.length; i++) {
                 formData.append(
                     "imagenes",
                     archivos[i]
@@ -76,104 +76,115 @@ function RegistrarProducto() {
                 text: error.message
             });
         }
+
+        nombreRef.current.value = "";
+        modeloRef.current.value = "";
+        descripcionRef.current.value = "";
+        precioRef.current.value = "";
+        existenciaRef.current.value = "";
+        marcaRef.current.value = "";
+        categoriaRef.current.value = "";
+        pasilloRef.current.value = "";
+        estanteRef.current.value = "";
+        charolaRef.current.value = "";
+        cajonRef.current.value = "";
+        tipoCorrienteRef.current.value = "";
+        imagenesRef.current.value = "";
     };
 
     return (
-    <div>
-        <h2 className={styles.titulo}>Registrar Producto</h2>
+        <div>
+            <h2 className={styles.titulo}>Registrar Producto</h2>
 
-        <form className={styles.form} onSubmit={registrar}>
+            <form className={styles.form} onSubmit={registrar}>
 
-            {/* Info general */}
-            <span className={styles.seccion}>Información general</span>
+                <span className={styles.seccion}>Información general</span>
 
-            <label className={styles.label}>Nombre</label>
-            <input className={styles.inputBase} ref={nombreRef} placeholder="Nombre del producto" />
+                <label className={styles.label}>Nombre</label>
+                <input className={styles.inputBase} ref={nombreRef} placeholder="Nombre del producto" />
 
-            <label className={styles.label}>Modelo</label>
-            <input className={styles.inputBase} ref={modeloRef} placeholder="Modelo" />
+                <label className={styles.label}>Modelo</label>
+                <input className={styles.inputBase} ref={modeloRef} placeholder="Modelo" />
 
-            <label className={styles.label}>Descripción</label>
-            <textarea className={styles.inputBase} ref={descripcionRef} placeholder="Descripción del producto" />
+                <label className={styles.label}>Descripción</label>
+                <textarea className={styles.inputBase} ref={descripcionRef} placeholder="Descripción del producto" />
 
-            <div className={styles.grid2}>
-                <div>
-                    <label className={styles.label}>Precio</label>
-                    <input className={styles.inputBase} ref={precioRef} type="number" placeholder="0.00" />
+                <div className={styles.grid2}>
+                    <div>
+                        <label className={styles.label}>Precio</label>
+                        <input className={styles.inputBase} ref={precioRef} type="number" placeholder="0.00" />
+                    </div>
+                    <div>
+                        <label className={styles.label}>Existencia</label>
+                        <input className={styles.inputBase} ref={existenciaRef} type="number" placeholder="0" />
+                    </div>
                 </div>
-                <div>
-                    <label className={styles.label}>Existencia</label>
-                    <input className={styles.inputBase} ref={existenciaRef} type="number" placeholder="0" />
-                </div>
-            </div>
 
-            <div className={styles.grid2}>
-                <div>
-                    <label className={styles.label}>Marca</label>
-                    <select className={styles.inputBase} ref={marcaRef} defaultValue="">
-                        <option value="" disabled>Selecciona una marca</option>
-                        <option value="Bosch">BOSCH</option>
-                        <option value="Makita">MAKITA</option>
-                        <option value="Dremel">DREMEL</option>
-                    </select>
+                <div className={styles.grid2}>
+                    <div>
+                        <label className={styles.label}>Marca</label>
+                        <select className={styles.inputBase} ref={marcaRef} defaultValue="">
+                            <option value="" disabled>Selecciona una marca</option>
+                            <option value="Bosch">BOSCH</option>
+                            <option value="Makita">MAKITA</option>
+                            <option value="Dremel">DREMEL</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label className={styles.label}>Categoría</label>
+                        <select className={styles.inputBase} ref={categoriaRef} defaultValue="">
+                            <option value="" disabled>Selecciona una categoría</option>
+                            <option value="Herramientas Eléctricas">Herramientas Eléctricas</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Refacciones">Refacciones</option>
+                            <option value="Alámbricas">Alámbricas</option>
+                            <option value="De Batería">De Batería</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label className={styles.label}>Categoría</label>
-                    <select className={styles.inputBase} ref={categoriaRef} defaultValue="">
-                        <option value="" disabled>Selecciona una categoría</option>
-                        <option value="Herramientas Eléctricas">Herramientas Eléctricas</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Refacciones">Refacciones</option>
-                        <option value="Alámbricas">Alámbricas</option>
-                        <option value="De Batería">De Batería</option>
-                    </select>
-                </div>
-            </div>
 
-            <div className={styles.grid2}>
-                <div>
-                    <label className={styles.label}>Tipo de corriente</label>
-                    <select className={styles.inputBase} ref={tipoCorrienteRef} defaultValue="">
-                        <option value="" disabled>Selecciona tipo</option>
-                        <option value="bateria">Batería</option>
-                        <option value="alambre">Alámbrica</option>
-                    </select>
+                <div className={styles.grid2}>
+                    <div>
+                        <label className={styles.label}>Tipo de corriente</label>
+                        <select className={styles.inputBase} ref={tipoCorrienteRef} defaultValue="">
+                            <option value="" disabled>Selecciona tipo</option>
+                            <option value="bateria">Batería</option>
+                            <option value="alambre">Alámbrica</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            {/* Ubicación */}
-            <span className={styles.seccion}>Ubicación en almacén</span>
+                <span className={styles.seccion}>Ubicación en almacén</span>
 
-            <div className={styles.grid2}>
-                <div>
-                    <label className={styles.label}>Pasillo</label>
-                    <input className={styles.inputBase} ref={pasilloRef} placeholder="Pasillo" />
+                <div className={styles.grid2}>
+                    <div>
+                        <label className={styles.label}>Pasillo</label>
+                        <input className={styles.inputBase} ref={pasilloRef} placeholder="Pasillo" />
+                    </div>
+                    <div>
+                        <label className={styles.label}>Estante</label>
+                        <input className={styles.inputBase} ref={estanteRef} placeholder="Estante" />
+                    </div>
+                    <div>
+                        <label className={styles.label}>Charola</label>
+                        <input className={styles.inputBase} ref={charolaRef} placeholder="Charola" />
+                    </div>
+                    <div>
+                        <label className={styles.label}>Cajón</label>
+                        <input className={styles.inputBase} ref={cajonRef} placeholder="Cajón" />
+                    </div>
                 </div>
-                <div>
-                    <label className={styles.label}>Estante</label>
-                    <input className={styles.inputBase} ref={estanteRef} placeholder="Estante" />
-                </div>
-                <div>
-                    <label className={styles.label}>Charola</label>
-                    <input className={styles.inputBase} ref={charolaRef} placeholder="Charola" />
-                </div>
-                <div>
-                    <label className={styles.label}>Cajón</label>
-                    <input className={styles.inputBase} ref={cajonRef} placeholder="Cajón" />
-                </div>
-            </div>
 
-            {/* Imágenes */}
-            <span className={styles.seccion}>Imágenes</span>
-            <input className={styles.inputBase} ref={imagenesRef} type="file" multiple />
+                <span className={styles.seccion}>Imágenes</span>
+                <input className={styles.inputBase} ref={imagenesRef} type="file" multiple />
 
-            <button className={styles.btnSubmit} type="submit">
-                Registrar producto
-            </button>
+                <button className={styles.btnSubmit} type="submit">
+                    Registrar producto
+                </button>
 
-        </form>
-    </div>
-);
+            </form>
+        </div>
+    );
 }
 
 export default RegistrarProducto;

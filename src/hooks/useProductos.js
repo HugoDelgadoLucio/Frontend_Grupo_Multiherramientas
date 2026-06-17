@@ -48,6 +48,7 @@ const useProductos = (categoriaFiltro = "", marcaFiltro = "", soloActivos = fals
                 }
 
                 const data = await response.json();
+                console.log(data.data);
                 setProductos(data.data);
 
             } catch (err) {

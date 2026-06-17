@@ -15,7 +15,6 @@ function Productos() {
         <div className={styles.ProductBase}>
             <h2>Catálogo de Productos</h2>
 
-            {/* Filtros activos */}
             {(categoriaParam || marcaParam) && (
                 <div>
                     <p>
@@ -25,11 +24,9 @@ function Productos() {
                 </div>
             )}
 
-            {/* Estados */}
             {loading && <p>Cargando productos...</p>}
             {error && <p>Error: {error}</p>}
 
-            {/* Listado */}
             {!loading && !error && (
                 <div>
                     {productos.length === 0 ? (
@@ -37,9 +34,7 @@ function Productos() {
                     ) : (
                         productos.map(producto => (
                             <div className={styles.ProductCard}
-                                key={producto.id}
-                                onClick={() => navigate(`/productos/${producto.id}`)}
-                                
+                                key={producto.id} onClick={() => navigate(`/productos/${producto.id}`)} 
                             >
                                 <h4>{producto.nombre}</h4>
                                 <p>{producto.descripcion}</p>

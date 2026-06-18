@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function CambiarContra() {
+function CambioContra() {
     const [password, setPassword] = useState("");
     const [passwordConf, setPasswordConf] = useState("");
     const [cargando, setCargando] = useState(false);
 
     const [searchParams] = useSearchParams();
-    const token = searchParams.get("token"); // lee el ?token=... de la URL
+    const token = searchParams.get("token");
 
     async function handleCambiar() {
         if (!password || !passwordConf) {
@@ -27,7 +27,7 @@ function CambiarContra() {
         }
 
         if (!token) {
-            Swal.fire({ icon: "error", title: "Token inválido", text: "El enlace de recuperación no es válido o ya expiró" });
+            Swal.fire({ icon: "error", title: "Enlace inválido", text: "Accede a esta página desde el enlace que te enviamos al correo" });
             return;
         }
 
@@ -37,7 +37,7 @@ function CambiarContra() {
             const response = await fetch("http://localhost:3000/usuarios/changePassword", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token, password })  // token del link, password nueva
+                body: JSON.stringify({ token, password })
             });
 
             const data = await response.json();
@@ -46,10 +46,13 @@ function CambiarContra() {
                 throw new Error(data.mensaje || "Error al cambiar la contraseña");
             }
 
-            Swal.fire({ icon: "success", title: "¡Listo!", text: "Tu contraseña fue cambiada correctamente" });
-
-            setPassword("");
-            setPasswordConf("");
+            Swal.fire({ 
+                icon: "success", 
+                title: "¡Listo!", 
+                text: "Tu contraseña fue cambiada correctamente" 
+            }).then(() => {
+                window.location.href = "/login"; // redirige al login después de confirmar
+            });
 
         } catch (error) {
             Swal.fire({ icon: "error", title: "Error", text: error.message });
@@ -85,4 +88,4 @@ function CambiarContra() {
     );
 }
 
-export default CambiarContra;
+export default CambioContra;

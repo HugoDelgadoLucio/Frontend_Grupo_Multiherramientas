@@ -29,6 +29,16 @@ function PanelAdmin() {
                     Ver catálogo
                 </NavLink>
                 <NavLink
+                    to="/admin/actualizar"
+                    className={({ isActive }) =>
+                        isActive
+                            ? `${styles.navLink} ${styles.navLinkActive}`
+                            : styles.navLink
+                    }
+                >
+                    Actualizar producto
+                </NavLink>
+                <NavLink
                     to="/admin/eliminar"
                     className={({ isActive }) =>
                         isActive

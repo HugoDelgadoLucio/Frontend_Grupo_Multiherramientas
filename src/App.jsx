@@ -13,12 +13,15 @@ const Contacto = lazy(() => import('./pages/Contacto/Contacto'));
 const Login = lazy(() => import('./pages/Login/Login'));
 const Registro = lazy(() => import('./pages/Registro/Registro'));
 const Productos = lazy(() => import('./pages/Productos/Productos'));
-const PanelAdmin = lazy(() => import("./pages/PanelAdmin/PanelAdmin"));
-const CatalogoAdmin = lazy(() => import("./pages/CatalogoAdmin/CatalogoAdmin"));
-const EliminarProducto = lazy(() => import("./pages/EliminarProducto/EliminarProducto"));
-const RegistrarProducto = lazy(() => import("./pages/RegistrarProducto/RegistrarProducto"));
+const PanelAdmin = lazy(() => import('./pages/PanelAdmin/PanelAdmin'));
+const CatalogoAdmin = lazy(() => import('./pages/CatalogoAdmin/CatalogoAdmin'));
+const EliminarProducto = lazy(() => import('./pages/EliminarProducto/EliminarProducto'));
+const RegistrarProducto = lazy(() => import('./pages/RegistrarProducto/RegistrarProducto'));
+const ActualizarProd = lazy(() => import('./pages/ActualizarProd/ActualizarProd'));
 const Producto = lazy(() => import("./pages/Producto/Producto"));
 const Recuperacion = lazy(() => import('./pages/Recuperacion/Recuperacion'));
+const CambioContra = lazy(() => import('./pages/CambioContra/CambioContra'));
+const Busqueda = lazy(() => import('./pages/Busqueda/Busqueda'));
 
 function App() {
 	return (
@@ -33,9 +36,11 @@ function App() {
 							<Route path="/contacto" element={<Contacto />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/recuperarContrasena" element={<Recuperacion />} />
+							<Route path="/reset-password" element={<CambioContra />} />
 							<Route path="/registro" element={<Registro />} />
 							<Route path="/productos" element={<Productos />} />
 							<Route path="/productos/:id" element={<Producto />} />
+							<Route path="/busqueda" element={<Busqueda />} />
 							<Route path="/admin" element={
 								<ProtectedRoute>
 									<PanelAdmin />
@@ -43,6 +48,7 @@ function App() {
 							}>
 								<Route path="catalogo" element={<CatalogoAdmin />} />
 								<Route path="eliminar" element={<EliminarProducto />} />
+								<Route path="actualizar" element={<ActualizarProd />} />
 								<Route path="registrar" element={<RegistrarProducto />} />
 							</Route>
 							<Route path="*" element={<NotFound />} />

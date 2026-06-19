@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
-import Header from './components/Header/Header';
+import HeaderWrapper from './components/HeaderWrapper/HeaderWrapper';
 import Footer from './components/Footer/Footer';
 import Inicio from './pages/Inicio/Inicio';
 import NotFound from './pages/NotFound/NotFound';
@@ -27,7 +27,7 @@ function App() {
 	return (
 		<>
 			<BrowserRouter>
-				<Header />
+				<HeaderWrapper />
 
 				<main>
 					<Suspense fallback={<p>Cargando...</p>}>

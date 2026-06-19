@@ -17,9 +17,7 @@ function Productos() {
 
             {(categoriaParam || marcaParam) && (
                 <div>
-                    <p>
-                        Filtrando por: <strong>{categoriaParam || marcaParam}</strong>
-                    </p>
+                    <p>Filtrando por: <strong>{categoriaParam || marcaParam}</strong></p>
                     <button onClick={() => setSearchParams({})}>Limpiar filtros</button>
                 </div>
             )}
@@ -28,14 +26,23 @@ function Productos() {
             {error && <p>Error: {error}</p>}
 
             {!loading && !error && (
-                <div>
+                <div className={styles.ProductGrid}>
                     {productos.length === 0 ? (
                         <p>No se encontraron productos.</p>
                     ) : (
                         productos.map(producto => (
-                            <div className={styles.ProductCard}
-                                key={producto.id} onClick={() => navigate(`/productos/${producto.id}`)} 
+                            <div
+                                className={styles.ProductCard}
+                                key={producto.id}
+                                onClick={() => navigate(`/productos/${producto.id}`)}
                             >
+                                <div className={styles.cardTop}>
+                                    {producto.categoria && (
+                                        <span className={styles.badgeCategoria}>
+                                            {producto.categoria}
+                                        </span>
+                                    )}
+                                </div>
                                 <h4>{producto.nombre}</h4>
                                 <p>{producto.descripcion}</p>
                                 <p className={styles.priceCard}><strong>${producto.precio}</strong></p>

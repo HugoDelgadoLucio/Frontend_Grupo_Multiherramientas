@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import styles from "./Recuperacion.module.css";
+import { NavLink } from "react-router-dom"; 
 function Recuperacion() {
     const [correo, setCorreo] = useState("");
     const [mensaje, setMensaje] = useState("");
@@ -38,21 +39,67 @@ function Recuperacion() {
     }
 
     return (
-        <div>
-            <label htmlFor="email">Ingresa tu correo</label>
-            <input
-                type="email"
-                id="email"
-                value={correo}
-                onChange={(e) => setCorreo(e.target.value)}
+    <div className={styles.recuperarWrapper}>
+        <div className={styles.blob1}></div>
+        <div className={styles.blob2}></div>
+        <div className={styles.blob3}></div>
+        <div className={styles.blob4}></div>
+        <div className={styles.blob5}></div>
+        <div className={styles.blob6}></div>
+        <div className={styles.blob7}></div>
+        <div className={styles.blob8}></div>
+
+        <div className={styles.recuperarBox}>
+
+            <img
+                src="public\PasswordWonder.png"
+                alt="Recuperar contraseña"
+                className={styles.recuperarImagen}
             />
-            <br />
-            <button onClick={handleRecuperar} disabled={cargando}>
-                {cargando ? "Enviando..." : "Recuperar"}
-            </button>
-            {mensaje && <p>{mensaje}</p>}
+
+            <div className={styles.recuperarForm}>
+
+                <label
+                    htmlFor="email"
+                    className={styles.recuperarLabel}
+                >
+                    Ingresa tu correo
+                </label>
+                <p className={styles.recuperarSubtexto}>
+                    Te enviaremos un enlace para restablecer tu contraseña
+                </p>
+                <input
+                    type="email"
+                    id="email"
+                    className={styles.recuperarInput}
+                    value={correo}
+                    onChange={(e) => setCorreo(e.target.value)}
+                    placeholder="correo@ejemplo.com"
+                />
+
+                <button
+                    onClick={handleRecuperar}
+                    disabled={cargando}
+                    className={styles.recuperarBtn}
+                >
+                    {cargando ? "Enviando..." : "Recuperar"}
+                </button>
+            
+<NavLink to="/login" className={styles.recuperarVolver}>
+                    ← Volver a iniciar sesión
+                </NavLink>
+
+                {mensaje && (
+                    <p className={styles.recuperarMensaje}>
+                        {mensaje}
+                    </p>
+                )}
+
+            </div>
+
         </div>
-    );
+    </div>
+);
 }
 
 export default Recuperacion;

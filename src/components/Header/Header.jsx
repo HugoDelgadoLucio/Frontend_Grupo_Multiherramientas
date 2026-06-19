@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
+import { FiSearch } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
-import BuscarProd from "../BuscarProd/BuscarProd";
 
 export default function Header() {
 
@@ -23,24 +23,24 @@ export default function Header() {
 				</div>
 
 				<nav>
-					<NavLink to="/">Inicio</NavLink>
+					<NavLink className={styles.TextRight} to="/">Inicio</NavLink>
 					{"|"}
-					<NavLink to="/contacto">Contacto</NavLink>
+					<NavLink className={styles.TextRight} to="/productos">Productos</NavLink>
 					{"|"}
-					<NavLink to="/productos">Productos</NavLink>
+					<NavLink className={styles.TextRight} to="/contacto">Contacto</NavLink>
 					{!usuario.token && (
 						<>
 							{"|"}
-							<NavLink to="/registro">Registro</NavLink>
+							<NavLink className={styles.TextRight} to="/registro">Registro</NavLink>
 							{"|"}
-							<NavLink to="/login">Ingresar</NavLink>
+							<NavLink className={styles.TextRight} to="/login">Ingresar</NavLink>
 						</>
 					)}
 
 					{usuario.rol === "admin" && (
 						<>
 							{"|"}
-							<NavLink to="/admin">Panel admin</NavLink>
+							<NavLink className={styles.TextRight} to="/admin">Panel admin</NavLink>
 						</>
 					)}
 
@@ -49,7 +49,7 @@ export default function Header() {
 							{"|"}
 							<span>{usuario.email}</span>
 							{"|"}
-							<button onClick={logout}>Cerrar sesión</button>
+							<button className={styles.btn} onClick={logout}>Cerrar sesión</button>
 						</>
 					)}
 				</nav>
@@ -67,7 +67,14 @@ export default function Header() {
 					Consulta precios y disponibilidad en línea
 				</p>
 
-				<BuscarProd />
+				<div className={styles.buscador}>
+					<input className={styles.inputBuscador} placeholder="Buscar por modelo, descripción o categoría." />
+					<button className={styles.btn}>
+						<FiSearch />
+						Buscar
+					</button>
+				</div>
+
 			</div>
 
 		</header>

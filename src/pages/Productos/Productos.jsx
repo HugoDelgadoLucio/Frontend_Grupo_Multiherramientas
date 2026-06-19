@@ -25,13 +25,18 @@ function Productos() {
             <h2>Catálogo de Productos</h2>
 
             {(categoriaParam || marcaParam) && (
-                <div>
-                    <p>Filtrando por: <strong>{categoriaParam || marcaParam}</strong></p>
-                    <button onClick={() => setSearchParams({})}>Limpiar filtros</button>
-                </div>
+                <div className={styles.filterBar}>
+                    <p className={styles.filterText}>
+                        Filtrando por: <strong>{categoriaParam || marcaParam}</strong>
+                    </p>
+                    <button className={styles.clearFilterBtn} onClick={() => setSearchParams({})}>
+                        Limpiar filtros
+                    </button>
+            </div>
             )}
 
             <input
+                className={styles.searchInput}
                 type="text"
                 placeholder="Buscar por nombre..."
                 value={busqueda}
@@ -42,7 +47,7 @@ function Productos() {
             {error && <p>Error: {error}</p>}
 
             {!loading && !error && (
-                <div>
+                <div className={styles.ProductGrid}>
                     {productosFiltrados.length === 0 ? (
                         <p>No se encontraron productos.</p>
                     ) : (

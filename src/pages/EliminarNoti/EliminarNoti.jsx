@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import styles from "./EliminarNoti.module.css";
 
 function EliminarNoti() {
 
@@ -74,20 +75,22 @@ function EliminarNoti() {
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
-            <h2>Eliminar Noticia</h2>
+    <div>
+        <h2 className={styles.titulo}>Eliminar Noticia</h2>
 
-            {noticias.map(noticia => (
-                <div key={noticia.id}>
-                    <h4>{noticia.titulo}</h4>
-                    <div>
-                        <span>ID: {noticia.id}</span>
-                        <button onClick={() => eliminar(noticia.id)}>Eliminar</button>
-                    </div>
+        {noticias.map(noticia => (
+            <div className={styles.NoticiaCard} key={noticia.id}>
+                <h4>{noticia.titulo}</h4>
+                <div className={styles.cardFooter}>
+                    <span className={styles.idTag}>ID: {noticia.id}</span>
+                    <button className={styles.btnEliminar} onClick={() => eliminar(noticia.id)}>
+                        Eliminar
+                    </button>
                 </div>
-            ))}
-        </div>
-    );
+            </div>
+        ))}
+    </div>
+);
 }
 
 export default EliminarNoti;

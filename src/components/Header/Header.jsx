@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
-import { FiSearch } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
+import BuscarProd from "../BuscarProd/BuscarProd";
 
 export default function Header() {
 
@@ -25,9 +25,9 @@ export default function Header() {
 				<nav>
 					<NavLink className={styles.TextRight} to="/">Inicio</NavLink>
 					{"|"}
-					<NavLink to="/noticias">Noticias</NavLink>
+					<NavLink className={styles.TextRight} to="/noticias">Noticias</NavLink>
 					{"|"}
-					<NavLink className={styles.TextRight} to="/contacto">Contacto</NavLink>
+					<NavLink className={styles.TextRight} to="/productos">Productos</NavLink>
 					{!usuario.token && (
 						<>
 							{"|"}
@@ -67,13 +67,7 @@ export default function Header() {
 					Consulta precios y disponibilidad en línea
 				</p>
 
-				<div className={styles.buscador}>
-					<input className={styles.inputBuscador} placeholder="Buscar por modelo, descripción o categoría." />
-					<button className={styles.btn}>
-						<FiSearch />
-						Buscar
-					</button>
-				</div>
+<BuscarProd />
 
 			</div>
 

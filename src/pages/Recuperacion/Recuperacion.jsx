@@ -38,7 +38,7 @@ function Recuperacion() {
         }
     }
 
-    return (
+       return (
     <div className={styles.recuperarWrapper}>
         <div className={styles.blob1}></div>
         <div className={styles.blob2}></div>
@@ -52,7 +52,7 @@ function Recuperacion() {
         <div className={styles.recuperarBox}>
 
             <img
-                src="public\PasswordWonder.png"
+                src="/PasswordWonder.png"
                 alt="Recuperar contraseña"
                 className={styles.recuperarImagen}
             />
@@ -85,7 +85,7 @@ function Recuperacion() {
                     {cargando ? "Enviando..." : "Recuperar"}
                 </button>
             
-<NavLink to="/login" className={styles.recuperarVolver}>
+                <NavLink to="/login" className={styles.recuperarVolver}>
                     ← Volver a iniciar sesión
                 </NavLink>
 

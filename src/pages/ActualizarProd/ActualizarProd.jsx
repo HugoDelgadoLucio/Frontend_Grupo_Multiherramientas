@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Swal from "sweetalert2";
 import useProductos from "../../hooks/useProductos";
 import { RiH2 } from "react-icons/ri";
+import styles from "./ActualizarProd.module.css";
 
 function ActualizarProd() {
     const { productos, loading, error } = useProductos("", "", true);
@@ -92,77 +93,98 @@ function ActualizarProd() {
 
     return (
         <div>
-            <RiH2>Actualizar Producto</RiH2>
+            <h2 className={styles.titulo}>Actualizar Producto</h2>
 
             {/* Lista de productos para seleccionar */}
-            {!productoSeleccionado && productos.map(producto => (
-                <div key={producto.id}>
-                    <h4>{producto.nombre}</h4>
-                    <div>
-                        <span>ID: {producto.id}</span>
-                        <button onClick={() => seleccionar(producto)}> Editar </button>
-                    </div>
+        {!productoSeleccionado && productos.map(producto => (
+            <div className={styles.ProductCard} key={producto.id}>
+                <h4>{producto.nombre}</h4>
+                <div className={styles.cardFooter}>
+                    <span className={styles.idTag}>ID: {producto.id}</span>
+                    <button
+                        className={styles.btnEditar}
+                        onClick={() => seleccionar(producto)}
+                    >
+                        Editar
+                    </button>
                 </div>
-            ))}
+            </div>
+        ))}
 
             {/* Formulario no controlado, aparece al seleccionar un producto */}
-            {productoSeleccionado && (
-                <div>
-                    <h3>Editando: {productoSeleccionado.nombre}</h3>
+{productoSeleccionado && (
+    <div className={styles.formCard}>
+        <h3 className={styles.formTitulo}>Editando: {productoSeleccionado.nombre}</h3>
 
-                    <div>
-                        <label>Nombre</label>
-                        <input ref={refNombre} type="text" />
-                    </div>
-                    <div>
-                        <label>Modelo</label>
-                        <input ref={refModelo} type="text" />
-                    </div>
-                    <div>
-                        <label>Descripción</label>
-                        <textarea ref={refDescripcion} />
-                    </div>
-                    <div>
-                        <label>Precio</label>
-                        <input ref={refPrecio} type="number" step="0.01" />
-                    </div>
-                    <div>
-                        <label>Existencia</label>
-                        <input ref={refExistencia} type="number" />
-                    </div>
-                    <div>
-                        <label>ID Marca</label>
-                        <input ref={refMarcaId} type="text" />
-                    </div>
-                    <div>
-                        <label>ID Ubicación</label>
-                        <input ref={refUbicacionId} type="text" />
-                    </div>
-                    <div>
-                        <label>Tipo corriente</label>
-                        <select ref={refTipoCorriente}>
-                            <option value="" disabled>Escoge un tipo</option>
-                            <option value="bateria">Bateria</option>
-                            <option value="alambre">Alambrico</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>ID Categoría</label>
-                        <input ref={refCategoriaId} type="text" />
-                    </div>
-                    <div>
-                        <label>Activo</label>
-                        <input ref={refActivo} type="checkbox" />
-                    </div>
-                    <div>
-                        <label>Descontinuado</label>
-                        <input ref={refDescontinuado} type="checkbox" />
-                    </div>
+        <div className={styles.field}>
+            <label className={styles.label}>Nombre</label>
+            <input className={styles.inputBase} ref={refNombre} type="text" />
+        </div>
 
-                    <button onClick={actualizar}>Guardar cambios</button>
-                    <button onClick={cancelar}>Cancelar</button>
-                </div>
-            )}
+        <div className={styles.field}>
+            <label className={styles.label}>Modelo</label>
+            <input className={styles.inputBase} ref={refModelo} type="text" />
+        </div>
+
+        <div className={styles.field}>
+            <label className={styles.label}>Descripción</label>
+            <textarea className={styles.inputBase} ref={refDescripcion} rows={4} />
+        </div>
+
+        <div className={styles.grid2}>
+            <div className={styles.field}>
+                <label className={styles.label}>Precio</label>
+                <input className={styles.inputBase} ref={refPrecio} type="number" step="0.01" />
+            </div>
+            <div className={styles.field}>
+                <label className={styles.label}>Existencia</label>
+                <input className={styles.inputBase} ref={refExistencia} type="number" />
+            </div>
+        </div>
+
+        <div className={styles.grid2}>
+            <div className={styles.field}>
+                <label className={styles.label}>ID Marca</label>
+                <input className={styles.inputBase} ref={refMarcaId} type="text" />
+            </div>
+            <div className={styles.field}>
+                <label className={styles.label}>ID Ubicación</label>
+                <input className={styles.inputBase} ref={refUbicacionId} type="text" />
+            </div>
+        </div>
+
+        <div className={styles.grid2}>
+            <div className={styles.field}>
+                <label className={styles.label}>Tipo corriente</label>
+                <select className={styles.inputBase} ref={refTipoCorriente}>
+                    <option value="" disabled>Escoge un tipo</option>
+                    <option value="bateria">Bateria</option>
+                    <option value="alambre">Alambrico</option>
+                </select>
+            </div>
+            <div className={styles.field}>
+                <label className={styles.label}>ID Categoría</label>
+                <input className={styles.inputBase} ref={refCategoriaId} type="text" />
+            </div>
+        </div>
+
+        <div className={styles.checkboxGroup}>
+            <div className={styles.checkboxRow}>
+                <input className={styles.checkbox} ref={refActivo} type="checkbox" id="activoEdit" />
+                <label className={styles.checkboxLabel} htmlFor="activoEdit">Activo</label>
+            </div>
+            <div className={styles.checkboxRow}>
+                <input className={styles.checkbox} ref={refDescontinuado} type="checkbox" id="descontinuadoEdit" />
+                <label className={styles.checkboxLabel} htmlFor="descontinuadoEdit">Descontinuado</label>
+            </div>
+        </div>
+
+        <div className={styles.btnRow}>
+            <button className={styles.btnGuardar} onClick={actualizar}>Guardar cambios</button>
+            <button className={styles.btnCancelar} onClick={cancelar}>Cancelar</button>
+        </div>
+    </div>
+)}
         </div>
     );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import styles from "./UbicacionProd.module.css";
 
 function UbicacionProds() {
 
@@ -63,73 +64,71 @@ function UbicacionProds() {
     };
 
     return (
-        <div>
-            <h2>Buscar productos por ubicación</h2>
+    <div className={styles.locationBase}>
+        <h2 className={styles.sectionTitle}>Buscar productos por ubicación</h2>
 
-            <form onSubmit={buscar}>
-
-                <div>
-                    <div>
-                        <label>Pasillo</label>
-                        <select value={pasillo} onChange={(e) => setPasillo(e.target.value)}>
-                            <option value="" disabled>Selecciona pasillo</option>
-                            {pasillos.map(p => <option key={p} value={p}>{p}</option>)}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label>Estante</label>
-                        <select value={estante} onChange={(e) => setEstante(e.target.value)}>
-                            <option value="" disabled>Selecciona estante</option>
-                            {estantes.map(e => <option key={e} value={e}>{e}</option>)}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label>Cajón</label>
-                        <select value={cajon} onChange={(e) => setCajon(e.target.value)}>
-                            <option value="" disabled>Selecciona cajón</option>
-                            {cajones.map(c => <option key={c} value={c}>{c}</option>)}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label>Charola</label>
-                        <select value={charola} onChange={(e) => setCharola(e.target.value)}>
-                            <option value="" disabled>Selecciona charola</option>
-                            {charolas.map(c => <option key={c} value={c}>{c}</option>)}
-                        </select>
-                    </div>
+        <form onSubmit={buscar} className={styles.locationForm}>
+            <div className={styles.fieldsGrid}>
+                <div className={styles.field}>
+                    <label>Pasillo</label>
+                    <select value={pasillo} onChange={(e) => setPasillo(e.target.value)}>
+                        <option value="" disabled>Selecciona pasillo</option>
+                        {pasillos.map(p => <option key={p} value={p}>{p}</option>)}
+                    </select>
                 </div>
 
-                <button type="submit">
-                    Buscar productos
-                </button>
+                <div className={styles.field}>
+                    <label>Estante</label>
+                    <select value={estante} onChange={(e) => setEstante(e.target.value)}>
+                        <option value="" disabled>Selecciona estante</option>
+                        {estantes.map(e => <option key={e} value={e}>{e}</option>)}
+                    </select>
+                </div>
 
-            </form>
+                <div className={styles.field}>
+                    <label>Cajón</label>
+                    <select value={cajon} onChange={(e) => setCajon(e.target.value)}>
+                        <option value="" disabled>Selecciona cajón</option>
+                        {cajones.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                </div>
 
-            {loading && <p>Buscando...</p>}
-            {error && <p>{error}</p>}
+                <div className={styles.field}>
+                    <label>Charola</label>
+                    <select value={charola} onChange={(e) => setCharola(e.target.value)}>
+                        <option value="" disabled>Selecciona charola</option>
+                        {charolas.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                </div>
+            </div>
 
-            {!loading && !error && buscado && (
-                <div>
-                    {productos.length === 0 ? (
-                        <p>No se encontraron productos en esa ubicación.</p>
-                    ) : (
-                        productos.map(producto => (
-                            <div key={producto.id}>
-                                <h4>{producto.nombre}</h4>
-                                <div>
-                                    <span>${producto.precio}</span>
-                                    <span>ID: {producto.id}</span>
-                                </div>
+            <button type="submit" className={styles.searchBtn}>
+                Buscar productos
+            </button>
+        </form>
+
+        {loading && <p>Buscando...</p>}
+        {error && <p>{error}</p>}
+
+        {!loading && !error && buscado && (
+            <div className={styles.resultsList}>
+                {productos.length === 0 ? (
+                    <p>No se encontraron productos en esa ubicación.</p>
+                ) : (
+                    productos.map(producto => (
+                        <div key={producto.id} className={styles.resultCard}>
+                            <h4 className={styles.resultName}>{producto.nombre}</h4>
+                            <div className={styles.resultMeta}>
+                                <span className={styles.priceBadge}>${producto.precio}</span>
+                                <span className={styles.idBadge}>ID: {producto.id}</span>
                             </div>
-                        ))
-                    )}
-                </div>
-            )}
-        </div>
-    );
+                        </div>
+                    ))
+                )}
+            </div>
+        )}
+    </div>
+);
 }
 
 export default UbicacionProds;

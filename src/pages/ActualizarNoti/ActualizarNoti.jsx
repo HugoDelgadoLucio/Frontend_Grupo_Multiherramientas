@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Swal from "sweetalert2";
+import styles from "./ActualizarNoti.module.css";
 
 function ActualizarNoti() {
     const [noticias, setNoticias] = useState([]);
@@ -99,45 +100,63 @@ function ActualizarNoti() {
 
     return (
         <div>
-            <h2>Actualizar Noticia</h2>
+             <h2 className={styles.titulo}>Actualizar Noticia</h2>
 
-            {/* Lista de noticias */}
-            {!noticiaSeleccionada && noticias.map(noticia => (
-                <div key={noticia.id}>
-                    <h4>{noticia.titulo}</h4>
-                    <div>
-                        <span>{noticia.publicada ? "Publicada" : "No publicada"}</span>
-                        <button onClick={() => seleccionar(noticia)}>Editar</button>
-                    </div>
+        {/* Lista de noticias */}
+        {!noticiaSeleccionada && noticias.map(noticia => (
+            <div className={styles.NoticiaCard} key={noticia.id}>
+                <h4>{noticia.titulo}</h4>
+                <div className={styles.cardFooter}>
+                    <span
+                        className={
+                            noticia.publicada
+                                ? styles.estadoPublicada
+                                : styles.estadoBorrador
+                        }
+                    >
+                        {noticia.publicada ? "Publicada" : "No publicada"}
+                    </span>
+                    <button
+                        className={styles.btnEditar}
+                        onClick={() => seleccionar(noticia)}
+                    >
+                        Editar
+                    </button>
                 </div>
-            ))}
+            </div>
+        ))}
 
             {/* Formulario */}
-            {noticiaSeleccionada && (
-                <div>
-                    <h3>Editando: {noticiaSeleccionada.titulo}</h3>
+{noticiaSeleccionada && (
+    <div className={styles.formCard}>
+        <h3 className={styles.formTitulo}>Editando: {noticiaSeleccionada.titulo}</h3>
 
-                    <div>
-                        <label>Título</label>
-                        <input ref={refTitulo} type="text" />
-                    </div>
-                    <div>
-                        <label>Contenido</label>
-                        <textarea ref={refContenido} rows={6} />
-                    </div>
-                    <div>
-                        <label>URL de imagen</label>
-                        <input ref={refImagenUrl} type="text" />
-                    </div>
-                    <div>
-                        <label>Publicada</label>
-                        <input ref={refPublicada} type="checkbox" />
-                    </div>
+        <div className={styles.field}>
+            <label className={styles.label}>Título</label>
+            <input className={styles.inputBase} ref={refTitulo} type="text" />
+        </div>
 
-                    <button onClick={actualizar}>Guardar cambios</button>
-                    <button onClick={cancelar}>Cancelar</button>
-                </div>
-            )}
+        <div className={styles.field}>
+            <label className={styles.label}>Contenido</label>
+            <textarea className={styles.inputBase} ref={refContenido} rows={6} />
+        </div>
+
+        <div className={styles.field}>
+            <label className={styles.label}>URL de imagen</label>
+            <input className={styles.inputBase} ref={refImagenUrl} type="text" />
+        </div>
+
+        <div className={styles.checkboxRow}>
+            <input className={styles.checkbox} ref={refPublicada} type="checkbox" id="publicadaEdit" />
+            <label className={styles.checkboxLabel} htmlFor="publicadaEdit">Publicada</label>
+        </div>
+
+        <div className={styles.btnRow}>
+            <button className={styles.btnGuardar} onClick={actualizar}>Guardar cambios</button>
+            <button className={styles.btnCancelar} onClick={cancelar}>Cancelar</button>
+        </div>
+    </div>
+)}
         </div>
     );
 }

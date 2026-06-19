@@ -33,7 +33,6 @@
     align-items: center;
     padding: 8px 0;
 }
-
 .navLink {
     color: #254a7e;
     text-decoration: none;
@@ -48,11 +47,47 @@
     color: white;
 }
 
-.navLinkActive {
+.navLinkRegistrar {
+    background: #5f5e5a;
+    color: white;
+}
+
+.navLinkUbicacion {
+    background: #5f5e5a;
+    color: white;
+}
+
+.navLinkCatalogo {
+    background: #254a7e;
+    color: white;
+}
+
+.navLinkActualizar {
+    background: #1d9e75;
+    color: white;
+}
+
+.navLinkEliminar {
     background: #e63030;
     color: white;
 }
 
-.adminContent {
-    margin-top: 24px;
+.navLinkRegistroNoticia {
+    background: #5f5e5a;
+    color: white;
+}
+
+.navLinkCatalogoNoti {
+    background: #254a7e;
+    color: white;
+}
+
+.navLinkActualizarNoti {
+    background: #1d9e75;
+    color: white;
+}
+
+.navLinkEliminarNoti {
+    background: #e63030;
+    color: white;
 }

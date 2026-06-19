@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Swal from "sweetalert2";
+import styles from "./RegistrarNoticia.module.css"
 
 function RegistroNoticia() {
 
@@ -69,34 +70,34 @@ function RegistroNoticia() {
     };
 
     return (
-        <div>
-            <h2>Registrar Noticia</h2>
+    <div>
+        <h2 className={styles.titulo}>Registrar Noticia</h2>
 
-            <form onSubmit={registrar}>
+        <form className={styles.form} onSubmit={registrar}>
 
-                <span>Información de la noticia</span>
+            <span className={styles.seccion}>Información de la noticia</span>
 
-                <label>Título</label>
-                <input ref={tituloRef} placeholder="Título de la noticia" />
+            <label className={styles.label}>Título</label>
+            <input className={styles.inputBase} ref={tituloRef} placeholder="Título de la noticia" />
 
-                <label>Contenido</label>
-                <textarea ref={contenidoRef} placeholder="Contenido de la noticia" />
+            <label className={styles.label}>Contenido</label>
+            <textarea className={styles.inputBase} ref={contenidoRef} placeholder="Contenido de la noticia" />
 
-                <div>
-                    <label>Publicada</label>
-                    <input ref={publicadaRef} type="checkbox" />
-                </div>
+            <div className={styles.checkboxRow}>
+                <input className={styles.checkbox} ref={publicadaRef} type="checkbox" id="publicada" />
+                <label className={styles.checkboxLabel} htmlFor="publicada">Publicada</label>
+            </div>
 
-                <span>Imagen</span>
-                <input ref={imagenRef} type="file" accept="image/*" />
+            <span className={styles.seccion}>Imagen</span>
+            <input className={styles.inputFile} ref={imagenRef} type="file" accept="image/*" />
 
-                <button type="submit">
-                    Registrar noticia
-                </button>
+            <button className={styles.btnSubmit} type="submit">
+                Registrar noticia
+            </button>
 
-            </form>
-        </div>
-    );
+        </form>
+    </div>
+);
 }
 
 export default RegistroNoticia;

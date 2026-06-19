@@ -14,8 +14,8 @@ export default function HeaderSimplificado() {
 
 			<nav className={styles.nav}>
 				<NavLink to="/">Inicio</NavLink>
+				<NavLink to="/noticias">Noticia</NavLink>
 				<NavLink to="/productos">Productos</NavLink>
-				<NavLink to="/contacto">Contacto</NavLink>
 
 				{!usuario.token && (
 					<>

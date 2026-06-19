@@ -1,0 +1,128 @@
+.locationBase {
+    max-width: 900px;
+    padding: 24px 20px;
+}
+
+.sectionTitle {
+    border-left: 4px solid #1a2a4a;
+    padding-left: 10px;
+    color: #1a2a4a;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.locationForm {
+    margin-bottom: 28px;
+}
+
+.fieldsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+@media (max-width: 768px) {
+    .fieldsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .fieldsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: #1f2937;
+}
+
+.field select {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #374151;
+    background: #fff;
+}
+
+.field select:focus {
+    outline: none;
+    border-color: #1a2a4a;
+}
+
+.searchBtn {
+    background: #1a2a4a;
+    color: #fff;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.searchBtn:hover {
+    background: #254a7e;
+}
+
+.searchBtn:active {
+    transform: translate(1px, 1px);
+}
+
+.resultsList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.resultCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.resultName {
+    border-left: 3px solid #1a2a4a;
+    padding-left: 8px;
+    margin: 0;
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+.resultMeta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.priceBadge {
+    background: #1a2a4a;
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.idBadge {
+    background: #f1f1f1;
+    color: #6b7280;
+    font-family: monospace;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+}

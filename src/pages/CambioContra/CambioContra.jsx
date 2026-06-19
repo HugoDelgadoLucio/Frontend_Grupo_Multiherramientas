@@ -62,30 +62,43 @@ function CambioContra() {
     }
 
     return (
-        <div>
-            <h3>Cambiar contraseña</h3>
+    <div className={styles.cambioWrapper}>
 
-            <label htmlFor="password">Nueva contraseña</label>
-            <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+        <FloatingBlobs />
 
-            <label htmlFor="passwordConf">Confirmar contraseña</label>
-            <input
-                id="passwordConf"
-                type="password"
-                value={passwordConf}
-                onChange={(e) => setPasswordConf(e.target.value)}
-            />
+        <div className={styles.cambioCard}>
 
-            <button onClick={handleCambiar} disabled={cargando}>
+            <h3 className={styles.titulo}>Cambiar contraseña</h3>
+
+            <div className={styles.campo}>
+                <label htmlFor="password">Nueva contraseña</label>
+                <input
+                    id="password"
+                    type="password"
+                    className={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+
+            <div className={styles.campo}>
+                <label htmlFor="passwordConf">Confirmar contraseña</label>
+                <input
+                    id="passwordConf"
+                    type="password"
+                    className={styles.input}
+                    value={passwordConf}
+                    onChange={(e) => setPasswordConf(e.target.value)}
+                />
+            </div>
+
+            <button onClick={handleCambiar} disabled={cargando} className={styles.btn}>
                 {cargando ? "Guardando..." : "Cambiar contraseña"}
             </button>
+
         </div>
-    );
+    </div>
+);
 }
 
 export default CambioContra;

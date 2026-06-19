@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-import styles from "./UbicacionProd.module.css";
+import styles from "./UbicacionProds.module.css";
 
 function UbicacionProds() {
 
@@ -16,7 +16,7 @@ function UbicacionProds() {
 
     const pasillos = Array.from({ length: 5 }, (_, i) => String(i + 1));
     const estantes = Array.from({ length: 6 }, (_, i) => String.fromCharCode(65 + i));
-    const cajones = Array.from({ length: 4 }, (_, i) => String(i + 1));
+    const cajones = Array.from({ length: 24 }, (_, i) => String(i + 1));
     const charolas = Array.from({ length: 20 }, (_, i) => String(i + 1));
 
     const buscar = async (e) => {

@@ -2,8 +2,10 @@ import { useCallback } from "react";
 import Swal from "sweetalert2";
 import useProductos from "../../hooks/useProductos";
 import styles from "./EliminarProducto.module.css";
+import { useAuth } from "../../context/useAuth";
 
 function EliminarProducto() {
+    const { usuario } = useAuth();
 
     const { productos, loading, error } = useProductos("", "", true);
 
@@ -11,7 +13,7 @@ function EliminarProducto() {
 
         const confirmar = await Swal.fire({
             title: "¿Eliminar producto?",
-            text: id,
+            text: `Id: ${id}`,
             icon: "warning",
             showCancelButton: true
         });
@@ -22,7 +24,10 @@ function EliminarProducto() {
 
             const response = await fetch("http://localhost:3000/productos/eliminarLogico", {
                 method: "DELETE",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${usuario.token}` // 👈 agrega este header
+                },
                 body: JSON.stringify({ id })
             });
 
@@ -37,7 +42,7 @@ function EliminarProducto() {
         } catch (error) {
             Swal.fire({ icon: "error", title: error.message });
         }
-    }, []);
+    }, [usuario.token]);
 
     if (loading) return <p className={styles.estado}>Cargando...</p>;
     if (error) return <p className={styles.estado}>{error}</p>;

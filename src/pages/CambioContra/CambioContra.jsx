@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import styles from "./CambioContra.module.css";
+import FloatingBlobs from "../../components/FloatingBlobs/FloatingBlobs";
 
 function CambioContra() {
-    const [password, setPassword] = useState("");
-    const [passwordConf, setPasswordConf] = useState("");
+    const [contra, setContra] = useState("");
+    const [contConf, setContConf] = useState("");
     const [cargando, setCargando] = useState(false);
 
     const [searchParams] = useSearchParams();
     const token = searchParams.get("token");
 
     async function handleCambiar() {
-        if (!password || !passwordConf) {
-            Swal.fire({ icon: "warning", title: "Campos vacíos", text: "Completa ambos campos" });
+        if (!contra || !contConf) {
+            Swal.fire({ icon: "error", title: "Campos vacíos", text: "Los campos no pueden estar vacios" });
             return;
         }
 
-        if (password !== passwordConf) {
+        if (contra !== contConf) {
             Swal.fire({ icon: "error", title: "Error", text: "Las contraseñas no coinciden" });
             return;
         }
 
-        if (password.length < 8) {
+        if (contra.length < 8) {
             Swal.fire({ icon: "error", title: "Error", text: "La contraseña debe tener al menos 8 caracteres" });
             return;
         }
@@ -37,7 +39,7 @@ function CambioContra() {
             const response = await fetch("http://localhost:3000/usuarios/changePassword", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token, password })
+                body: JSON.stringify({ token, contra })
             });
 
             const data = await response.json();
@@ -76,8 +78,8 @@ function CambioContra() {
                     id="password"
                     type="password"
                     className={styles.input}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={contra}
+                    onChange={(e) => setContra(e.target.value)}
                 />
             </div>
 
@@ -87,8 +89,8 @@ function CambioContra() {
                     id="passwordConf"
                     type="password"
                     className={styles.input}
-                    value={passwordConf}
-                    onChange={(e) => setPasswordConf(e.target.value)}
+                    value={contConf}
+                    onChange={(e) => setContConf(e.target.value)}
                 />
             </div>
 

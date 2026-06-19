@@ -9,6 +9,7 @@ import {
 	FaClock,
 	FaQuestionCircle,
 } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const faqs = [
 	{
@@ -41,6 +42,30 @@ function Contacto() {
 	const [asunto, setAsunto] = useState("");
 	const [mensaje, setMensaje] = useState("");
 
+	function enviar(){
+		if(!nombre || !telefono || !correo || !asunto || !mensaje){
+			Swal.fire({ icon: "error", title: "Error", text: "Debes llenar todos los campos" });
+			return;
+		}
+		if(nombre.length < 3 || nombre.length > 100){
+			Swal.fire({ icon: "error", title: "Error", text: "El nombre no cumple con una longitud entre el rango indicado" });
+			return;
+		}
+		if(telefono.length !== 10){
+			Swal.fire({ icon: "error", title: "Error", text: "El número de teléfono no es válido" });
+			return;
+		}
+		if(!(correo.includes("@"))){
+			Swal.fire({ icon: "error", title: "Error", text: "La dirección de correo no es válida" });
+			return;
+		}
+		if(mensaje.length < 10 || mensaje.length > 500){
+			Swal.fire({ icon: "error", title: "Error", text: "El mensaje no cumple con una longitud entre el rango indicado" });
+			return;
+		}
+		Swal.fire({ icon: "success", title: "Mensaje enviado", text: "El mensaje se envió correctamente, muchas gracias por comunicarte con nosotros" });
+	}
+
 	return (
 		<div className={styles.contacto}>
 			<div className={styles.formulario}>
@@ -50,15 +75,14 @@ function Contacto() {
 
 				<div className={styles.phoneName}>
 					<div>
-						<p>
-							Nombre <span>*</span>
-						</p>
+						<p>Nombre <span>*</span></p>
 						<input
 							className={styles.inputBase}
 							type="text"
 							placeholder="Tu nombre completo"
 							value={nombre} onChange={(e) => setNombre(e.target.value)} 
 						/>
+						<small>El nombre debe tener entre 3 y 100 caracteres</small>
 					</div>
 					<div>
 						<p>Teléfono</p>
@@ -68,12 +92,11 @@ function Contacto() {
 							placeholder="(449) 000-0000"
 							value={telefono} onChange={(e) => setTelefono(e.target.value)} 
 						/>
+						<small>El teléfono debe tener entre 1 y 10 números</small>
 					</div>
 				</div>
 
-				<p>
-					Correo electroníco <span>*</span>
-				</p>
+				<p>Correo electroníco <span>*</span></p>
 				<input
 					className={styles.inputBase}
 					type="text"
@@ -81,27 +104,22 @@ function Contacto() {
 					value={correo} onChange={(e) => setCorreo(e.target.value)} 
 				/>
 
-				<p>
-					Asunto <span>*</span>
-				</p>
+				<p>Asunto <span>*</span></p>
 				<select className={styles.inputBase} value={asunto} onChange={(e) => setAsunto(e.target.value)}>
 					<option>Consulta de precio o disponibilidad</option>
 					<option>Consultar metodos de pago</option>
 					<option>Consultar pedidos</option>
 				</select>
 
-				<p>
-					Mensaje <span>*</span>
-				</p>
+				<p>Mensaje <span>*</span></p>
 				<textarea
 					className={styles.inputBase}
 					placeholder="Describe tu consulta, incluye modelo o código si tienes…"
 					value={mensaje} onChange={(e) => setMensaje(e.target.value)}
 				/>
+				<small>El mensaje debe tener entre 10 y 500 caracteres</small>
 
-				<button className={styles.sendButton}>
-					Enviar mensaje <FaPaperPlane />
-				</button>
+				<button className={styles.sendButton} onClick={enviar}>Enviar mensaje <FaPaperPlane /></button>
 			</div>
 
 			<div className={styles.ubicacionDatos}>

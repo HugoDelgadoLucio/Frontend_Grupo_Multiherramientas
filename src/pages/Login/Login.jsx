@@ -36,7 +36,6 @@ function Login() {
 			);
 
 			if (!response.ok) {
-
 				const errorData = await response.json();
 
 				throw new Error(
@@ -48,11 +47,7 @@ function Login() {
 			const data = await response.json();
 			login(data);
 
-			await Swal.fire({
-				icon: "success",
-				title: "¡Bienvenido!",
-				text: data.mensaje
-			});
+			await Swal.fire({ icon: "success", title: "¡Bienvenido!", text: data.mensaje });
 
 			if (data.data.rol === "admin") {
 				navigate("/admin");
@@ -63,10 +58,11 @@ function Login() {
 
 		}
 		catch (error) {
+			console.log(error);
 			Swal.fire({
 				icon: "error",
 				title: "Error al iniciar sesión",
-				text: error.message
+				text: "Correo o contraseña incorrecta"
 			});
 			setEstado("Olvide mi contraseña");
 			setMostrar("block");

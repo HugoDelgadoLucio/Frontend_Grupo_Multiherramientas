@@ -43,7 +43,7 @@ function EliminarNoti() {
 
         const confirmar = await Swal.fire({
             title: "¿Eliminar noticia?",
-            text: id,
+            text: `Id: ${id}`,
             icon: "warning",
             showCancelButton: true
         });

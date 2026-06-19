@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./Recuperacion.module.css";
 import { NavLink } from "react-router-dom"; 
+import Swal from "sweetalert2";
+
 function Recuperacion() {
     const [correo, setCorreo] = useState("");
     const [mensaje, setMensaje] = useState("");
@@ -9,8 +11,14 @@ function Recuperacion() {
     async function handleRecuperar() {
         if (!correo) return;
 
+        if(!(correo.includes("@"))){
+            Swal.fire({ icon: "error", title: "Error", text: "La dirección de correo no es válida" });
+            setCorreo(" ");
+            return;
+        }
+
         setCargando(true);
-        setMensaje("");
+        setMensaje("Esto puede tardar un tiempo, sea paciente.");
 
         try {
             const response = await fetch("http://localhost:3000/usuarios/recover", {
@@ -27,7 +35,6 @@ function Recuperacion() {
                 setMensaje(data.mensaje || "Ocurrió un error");
                 return;
             }
-
             setMensaje("¡Correo enviado! Revisa tu bandeja de entrada.");
 
         } catch (err) {

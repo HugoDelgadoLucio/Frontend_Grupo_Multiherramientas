@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Swal from "sweetalert2";
-import styles from "./RegistrarNoticia.module.css"
+import styles from "./RegistroNoticia.module.css"
 
 function RegistroNoticia() {
 
@@ -13,19 +13,35 @@ function RegistroNoticia() {
 
         e.preventDefault();
 
+        const titulo = tituloRef.current.value;
+        const contenido = contenidoRef.current.value;
+        const publicada = publicadaRef.current.checked;
+
+        const correo_usuario = localStorage.getItem("email");
+
+        if (!correo_usuario) {
+            Swal.fire({ icon: "error", title: "Error", text: "Debes iniciar sesión como administrador para registrar una noticia" });
+            return;
+        }
+        if(!titulo || !contenido){
+            Swal.fire({ icon: "error", title: "Error", text: "Debes llenar todos los campos" });
+            return;
+        }
+        if(titulo.length < 5 || titulo.length > 200){
+            Swal.fire({ icon: "error", title: "Error", text: "La longitud del titulo no esta entre el rango especificado" });
+            return;
+        }
+        if(contenido.length < 15 || contenido.length > 500){
+            Swal.fire({ icon: "error", title: "Error", text: "La longitud del contenido no esta entre el rango especificado" });
+            return;
+        }
+
         try {
-
-            const correo_usuario = localStorage.getItem("email");
-
-            if (!correo_usuario) {
-                throw new Error("Debes iniciar sesión como admin para registrar una noticia");
-            }
-
             const formData = new FormData();
 
-            formData.append("titulo", tituloRef.current.value);
-            formData.append("contenido", contenidoRef.current.value);
-            formData.append("publicada", publicadaRef.current.checked);
+            formData.append("titulo", titulo);
+            formData.append("contenido", contenido);
+            formData.append("publicada", publicada);
             formData.append("correo_usuario", correo_usuario);
 
             const archivo = imagenRef.current.files[0];
@@ -56,10 +72,11 @@ function RegistroNoticia() {
             });
         }
         catch (error) {
+            console.log(error);
             Swal.fire({
                 icon: "error",
                 title: "Error",
-                text: error.message
+                text: "Hubo un error al registrar la noticia"
             });
         }
 
@@ -79,9 +96,11 @@ function RegistroNoticia() {
 
             <label className={styles.label}>Título</label>
             <input className={styles.inputBase} ref={tituloRef} placeholder="Título de la noticia" />
+            <small>El titulo debe contener entre 5 y 200 caracteres.</small>
 
             <label className={styles.label}>Contenido</label>
             <textarea className={styles.inputBase} ref={contenidoRef} placeholder="Contenido de la noticia" />
+            <small>El contenido debe contener entre 10 y 500 caracteres.</small>
 
             <div className={styles.checkboxRow}>
                 <input className={styles.checkbox} ref={publicadaRef} type="checkbox" id="publicada" />
@@ -91,10 +110,7 @@ function RegistroNoticia() {
             <span className={styles.seccion}>Imagen</span>
             <input className={styles.inputFile} ref={imagenRef} type="file" accept="image/*" />
 
-            <button className={styles.btnSubmit} type="submit">
-                Registrar noticia
-            </button>
-
+            <button className={styles.btnSubmit} type="submit">Registrar noticia</button>
         </form>
     </div>
 );

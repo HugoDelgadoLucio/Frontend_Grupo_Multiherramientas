@@ -10,7 +10,7 @@ function CatalogoAdmin() {
 
     return (
         <div>
-            <h2 className={styles.titulo}>Catálogo Administrativo</h2>
+            <h2 className={styles.titulo}>Catálogo Administrativo de Productos</h2>
 
             {productos.map(producto => (
                 <div className={styles.ProductCard} key={producto.id}>

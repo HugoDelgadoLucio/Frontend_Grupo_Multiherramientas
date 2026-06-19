@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import Swal from "sweetalert2";
 import useProductos from "../../hooks/useProductos";
 import styles from "./EliminarProducto.module.css";
@@ -6,7 +7,7 @@ function EliminarProducto() {
 
     const { productos, loading, error } = useProductos("", "", true);
 
-    const eliminar = async (id) => {
+    const eliminar = useCallback(async (id) => {
 
         const confirmar = await Swal.fire({
             title: "¿Eliminar producto?",
@@ -36,7 +37,7 @@ function EliminarProducto() {
         } catch (error) {
             Swal.fire({ icon: "error", title: error.message });
         }
-    };
+    }, []);
 
     if (loading) return <p className={styles.estado}>Cargando...</p>;
     if (error) return <p className={styles.estado}>{error}</p>;
@@ -50,10 +51,7 @@ function EliminarProducto() {
                     <h4>{producto.nombre}</h4>
                     <div className={styles.cardFooter}>
                         <span className={styles.idTag}>ID: {producto.id}</span>
-                        <button
-                            className={styles.btnEliminar}
-                            onClick={() => eliminar(producto.id)}
-                        >
+                        <button className={styles.btnEliminar} onClick={() => eliminar(producto.id)} >
                             Eliminar
                         </button>
                     </div>

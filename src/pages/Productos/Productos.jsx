@@ -1,4 +1,5 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { useState, useMemo } from "react";
 import useProductos from "../../hooks/useProductos";
 import styles from "./Productos.module.css"
 
@@ -10,6 +11,14 @@ function Productos() {
     const marcaParam = searchParams.get("marca") || "";
 
     const { productos, loading, error } = useProductos(categoriaParam, marcaParam);
+
+    const [busqueda, setBusqueda] = useState("");
+
+    const productosFiltrados = useMemo(() => {
+        return productos.filter(p =>
+            p.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        );
+    }, [productos, busqueda]);
 
     return (
         <div className={styles.ProductBase}>
@@ -24,17 +33,24 @@ function Productos() {
                 </div>
             )}
 
+            <input
+                type="text"
+                placeholder="Buscar por nombre..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+            />
+
             {loading && <p>Cargando productos...</p>}
             {error && <p>Error: {error}</p>}
 
             {!loading && !error && (
                 <div>
-                    {productos.length === 0 ? (
+                    {productosFiltrados.length === 0 ? (
                         <p>No se encontraron productos.</p>
                     ) : (
-                        productos.map(producto => (
+                        productosFiltrados.map(producto => (
                             <div className={styles.ProductCard}
-                                key={producto.id} onClick={() => navigate(`/productos/${producto.id}`)} 
+                                key={producto.id} onClick={() => navigate(`/productos/${producto.id}`)}
                             >
                                 <h4>{producto.nombre}</h4>
                                 <p>{producto.descripcion}</p>

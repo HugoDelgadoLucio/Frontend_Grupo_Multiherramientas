@@ -25,7 +25,7 @@ export default function Header() {
 				<nav>
 					<NavLink to="/">Inicio</NavLink>
 					{"|"}
-					<NavLink to="/contacto">Contacto</NavLink>
+					<NavLink to="/noticias">Noticias</NavLink>
 					{"|"}
 					<NavLink to="/productos">Productos</NavLink>
 					{!usuario.token && (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AuthContext from "./AuthContext";
+import PropTypes from "prop-types";
 
 export function AuthProvider({ children }) {
 
@@ -11,7 +12,6 @@ export function AuthProvider({ children }) {
     });
 
     const login = (data) => {
-
         localStorage.setItem("token", data.token);
         localStorage.setItem("rol", data.data.rol);
         localStorage.setItem("email", data.data.email);
@@ -26,29 +26,23 @@ export function AuthProvider({ children }) {
     };
 
     const logout = () => {
-
         localStorage.removeItem("token");
         localStorage.removeItem("rol");
         localStorage.removeItem("email");
         localStorage.removeItem("id");
 
-        setUsuario({
-            id: "",
-            email: "",
-            rol: "",
-            token: ""
-        });
+        setUsuario({ id: "", email: "", rol: "", token: "" });
     };
 
     return (
-        <AuthContext.Provider
-            value={{
-                usuario,
-                login,
-                logout
-            }}
-        >
+        <AuthContext.Provider value={{ usuario, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
 }
+
+AuthProvider.propTypes = {
+    children: PropTypes.node.isRequired
+};
+
+export default AuthProvider;

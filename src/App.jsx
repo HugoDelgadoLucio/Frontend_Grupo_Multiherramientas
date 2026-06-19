@@ -8,7 +8,6 @@ import Inicio from './pages/Inicio/Inicio';
 import NotFound from './pages/NotFound/NotFound';
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
-// Lazy loading para las demás páginas
 const Contacto = lazy(() => import('./pages/Contacto/Contacto'));
 const Login = lazy(() => import('./pages/Login/Login'));
 const Registro = lazy(() => import('./pages/Registro/Registro'));
@@ -18,10 +17,17 @@ const CatalogoAdmin = lazy(() => import('./pages/CatalogoAdmin/CatalogoAdmin'));
 const EliminarProducto = lazy(() => import('./pages/EliminarProducto/EliminarProducto'));
 const RegistrarProducto = lazy(() => import('./pages/RegistrarProducto/RegistrarProducto'));
 const ActualizarProd = lazy(() => import('./pages/ActualizarProd/ActualizarProd'));
+const ActualizarNoti = lazy(() => import('./pages/ActualizarNoti/ActualizarNoti'));
+const RegistroNoticia = lazy(() => import('./pages/RegistroNoticia/RegistroNoticia'));
+const EliminarNoti = lazy(() => import('./pages/EliminarNoti/EliminarNoti'));
+const CatalogoNotis = lazy(() => import('./pages/CatalogoNotis/CatalogoNotis'));
 const Producto = lazy(() => import("./pages/Producto/Producto"));
 const Recuperacion = lazy(() => import('./pages/Recuperacion/Recuperacion'));
 const CambioContra = lazy(() => import('./pages/CambioContra/CambioContra'));
 const Busqueda = lazy(() => import('./pages/Busqueda/Busqueda'));
+const ListNoticias = lazy(() => import('./pages/ListNoticias/ListNoticias'));
+const VerNoticia = lazy(() => import('./pages/VerNoticia/VerNoticia'));
+const UbicacionProds = lazy(() => import('./pages/UbicacionProds/UbicacionProds'));
 
 function App() {
 	return (
@@ -40,6 +46,8 @@ function App() {
 							<Route path="/registro" element={<Registro />} />
 							<Route path="/productos" element={<Productos />} />
 							<Route path="/productos/:id" element={<Producto />} />
+							<Route path="/noticias" element={<ListNoticias />} />
+							<Route path="/noticias/:id" element={<VerNoticia />} />
 							<Route path="/busqueda" element={<Busqueda />} />
 							<Route path="/admin" element={
 								<ProtectedRoute>
@@ -50,6 +58,11 @@ function App() {
 								<Route path="eliminar" element={<EliminarProducto />} />
 								<Route path="actualizar" element={<ActualizarProd />} />
 								<Route path="registrar" element={<RegistrarProducto />} />
+								<Route path="ubicacion" element={<UbicacionProds />} />
+								<Route path="actualizarNoti" element={<ActualizarNoti />} />
+								<Route path="registroNoticia" element={<RegistroNoticia />} />
+								<Route path="eliminarNoti" element={<EliminarNoti />} />
+								<Route path="catalogoNoti" element={<CatalogoNotis />} />
 							</Route>
 							<Route path="*" element={<NotFound />} />
 						</Routes>

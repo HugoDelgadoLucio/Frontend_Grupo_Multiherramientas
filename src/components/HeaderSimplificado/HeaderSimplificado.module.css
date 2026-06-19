@@ -8,7 +8,7 @@
 }
 
 .marca h1 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   letter-spacing: 0.5px;
   margin: 0;
@@ -43,4 +43,22 @@
 
 .nav a:last-child::after {
   content: "";
+}
+
+.titulo {
+  color: #e63030;
+}
+
+.btn {
+  background-color: #e63030;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav a.active {
+  color: #e63030;
+  font-weight: bold;
 }

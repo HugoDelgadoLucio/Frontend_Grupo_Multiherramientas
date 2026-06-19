@@ -26,9 +26,7 @@ function Productos() {
 
             {(categoriaParam || marcaParam) && (
                 <div>
-                    <p>
-                        Filtrando por: <strong>{categoriaParam || marcaParam}</strong>
-                    </p>
+                    <p>Filtrando por: <strong>{categoriaParam || marcaParam}</strong></p>
                     <button onClick={() => setSearchParams({})}>Limpiar filtros</button>
                 </div>
             )}
@@ -52,6 +50,13 @@ function Productos() {
                             <div className={styles.ProductCard}
                                 key={producto.id} onClick={() => navigate(`/productos/${producto.id}`)}
                             >
+                                <div className={styles.cardTop}>
+                                    {producto.categoria && (
+                                        <span className={styles.badgeCategoria}>
+                                            {producto.categoria}
+                                        </span>
+                                    )}
+                                </div>
                                 <h4>{producto.nombre}</h4>
                                 <p>{producto.descripcion}</p>
                                 <p className={styles.priceCard}><strong>${producto.precio}</strong></p>

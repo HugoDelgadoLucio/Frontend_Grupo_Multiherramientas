@@ -48,6 +48,7 @@ function Registro() {
 
     return (
         <div className={styles.register}>
+                <LavaBackground />
 
             <div className={styles.registerLeft}>
                 <div className={styles.registerBox}>
@@ -78,8 +79,16 @@ function Registro() {
             </div>
 
             <div className={styles.registerRight}>
-                <LavaBackground />
-            </div>
+<div className={styles.rightContent}>
+    <p className={styles.tagline}>Bienvenido a <br/><span>Grupo Multiherramientas</span></p>
+    <p className={styles.subtagline}>Crea tu <span>cuenta</span> y accede a nuestro catálogo</p>
+
+        <img 
+            src="/GirlMultiHerramientas.png" 
+            alt="Img descripción" 
+            className={styles.imgDerecha} 
+        />
+    </div>            </div>
 
         </div>
     );

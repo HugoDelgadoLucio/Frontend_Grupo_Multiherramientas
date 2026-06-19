@@ -64,7 +64,7 @@
   font-size: 0.7rem;
 }
 
-button {
+.btn {
   border-radius: 10px;
   width: 120px;
   height: 40px;
@@ -76,14 +76,14 @@ button {
   padding: 0px;
 }
 
-button:hover {
+.btn:hover {
   border: none;
   background-color: white;
   color: #1a2a4a;
   cursor: pointer;
 }
 
-input {
+.inputBuscador {
   height: 40px;
   width: 350px;
   font-size: 1rem;
@@ -96,4 +96,14 @@ input {
 
 .input::placeholder {
   color: #d1d5db;
+}
+
+.TextRight{
+    color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.TextRight:hover {
+  color: #e63030;
 }

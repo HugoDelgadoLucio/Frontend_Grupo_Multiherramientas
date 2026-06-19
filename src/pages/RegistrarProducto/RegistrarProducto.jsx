@@ -176,7 +176,7 @@ function RegistrarProducto() {
                 </div>
 
                 <span className={styles.seccion}>Imágenes</span>
-                <input className={styles.inputBase} ref={imagenesRef} type="file" multiple />
+<input className={styles.inputFile} ref={imagenesRef} type="file" multiple />
 
                 <button className={styles.btnSubmit} type="submit">
                     Registrar producto

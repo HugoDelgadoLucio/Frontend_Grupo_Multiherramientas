@@ -54,7 +54,7 @@ function CambioContra() {
                 title: "¡Listo!", 
                 text: "Tu contraseña fue cambiada correctamente" 
             }).then(() => {
-                window.location.href = "/login";
+                window.location.href = "/Frontend_Grupo_Multiherramientas/#/login";
             });
 
         } catch (error) {

@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "./VerNoticia.module.css"; 
+import { NavLink } from "react-router-dom";
+
 
 function VerNoticia() {
 
@@ -46,38 +49,53 @@ function VerNoticia() {
     }, [id]);
 
     if (loading) {
-        return <p>Cargando noticia...</p>;
-    }
+    return <p className={styles.estadoMsg}>Cargando noticia...</p>;
+}
 
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
+if (error) {
+    return <p className={styles.estadoMsgError}>Error: {error}</p>;
+}
 
-    if (!noticia) {
-        return <p>Noticia no encontrada.</p>;
-    }
+if (!noticia) {
+    return <p className={styles.estadoMsg}>Noticia no encontrada.</p>;
+}
 
-    return (
-        <div>
-            <div>
-                {
-                    noticia.imagen_url ? (
-                        <img
-                            src={noticia.imagen_url}
-                            alt={noticia.titulo}
-                            width="250"
-                        />
-                    ) : (
+return (
+    <div className={styles.pageWrapper}>
+        <article className={styles.articulo}>
+
+            <div className={styles.portadaWrap}>
+                {noticia.imagen_url ? (
+                    <img
+                        src={noticia.imagen_url}
+                        alt={noticia.titulo}
+                        className={styles.portada}
+                    />
+                ) : (
+                    <div className={styles.sinImagen}>
+                        <FiImage className={styles.sinImagenIcono} />
                         <small>No hay imagen disponible</small>
-                    )
-                }
+                    </div>
+                )}
             </div>
 
-            <h1>{noticia.titulo}</h1>
-            <p>{noticia.contenido}</p>
-            <p><strong>Publicada:</strong> {noticia.publicada ? "Sí" : "No"}</p>
-        </div>
-    );
+            <div className={styles.contenidoWrap}>
+                <span className={noticia.publicada ? styles.badgePublicada : styles.badgeBorrador}>
+                    {noticia.publicada ? "Publicada" : "No publicada"}
+                </span>
+
+                <h1 className={styles.titulo}>{noticia.titulo}</h1>
+
+                <p className={styles.cuerpo}>{noticia.contenido}</p>
+            </div>
+
+                 <NavLink to="/noticias" className={styles.volverLink}>
+        ← Volver a noticias
+    </NavLink>
+
+        </article>
+    </div>
+);
 }
 
 export default VerNoticia;

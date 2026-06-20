@@ -1,0 +1,55 @@
+.buscador {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    padding: 4px 4px 4px 16px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.buscador:focus-within {
+    border-color: #e63030;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 8px 0;
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.btnBuscar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #e63030;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+
+.btnBuscar:hover {
+    background: #c0392b;
+}
+
+.btnBuscar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

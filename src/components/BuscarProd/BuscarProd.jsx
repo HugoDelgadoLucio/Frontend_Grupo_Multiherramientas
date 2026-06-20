@@ -39,19 +39,19 @@ function BuscarProd() {
     };
 
     return (
-        <div className={styles.buscador}>
-            <input
-                ref={inputRef}
-                className={styles.input}
-                placeholder="Buscar por modelo, descripción o categoría."
-                onKeyDown={handleKeyDown}
-            />
-            <button onClick={buscar}>
-                <FiSearch />
-                {cargando ? "Buscando..." : "Buscar"}
-            </button>
-        </div>
-    );
+    <div className={styles.buscador}>
+        <input
+            ref={inputRef}
+            className={styles.input}
+            placeholder="Buscar por modelo, descripción o categoría."
+            onKeyDown={handleKeyDown}
+        />
+        <button className={styles.btnBuscar} onClick={buscar}>
+            <FiSearch />
+            {cargando ? "Buscando..." : "Buscar"}
+        </button>
+    </div>
+);
 }
 
 export default BuscarProd;

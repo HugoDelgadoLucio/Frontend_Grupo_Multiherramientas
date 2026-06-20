@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "./Producto.module.css";
+import { FiTool } from "react-icons/fi"; 
 
 function Producto() {
 
@@ -46,44 +48,79 @@ function Producto() {
     }, [id]);
 
     if (loading) {
-        return <p>Cargando producto...</p>;
-    }
+    return <p className={styles.estadoMsg}>Cargando producto...</p>;
+}
 
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
+if (error) {
+    return <p className={styles.estadoMsgError}>Error: {error}</p>;
+}
 
-    if (!producto) {
-        return <p>Producto no encontrado.</p>;
-    }
+if (!producto) {
+    return <p className={styles.estadoMsg}>Producto no encontrado.</p>;
+}
 
-    return (
-        <div>
-            <div>
-                {
-                    producto.imagenes?.length > 0 ? (
-                        producto.imagenes.map((imagen, index) => (
+return (
+        <div className={styles.pageWrapper}>
+    <div className={styles.detalleBase}>
+        <div className={styles.layout}>
+
+            <div className={styles.galeria}>
+                {producto.imagenes?.length > 0 ? (
+                    <div className={styles.galeriaGrid}>
+                        {producto.imagenes.map((imagen, index) => (
                             <img
                                 key={index}
                                 src={imagen.url}
                                 alt={`${producto.nombre}-${index}`}
-                                width="250"
+                                className={styles.imagen}
                             />
-                        ))
-                    ) : (
+                        ))}
+                    </div>
+                ) : (
+                    <div className={styles.sinImagen}>
+                        <FiTool className={styles.sinImagenIcono} />
                         <small>No hay imágenes disponibles</small>
-                    )
-                }
+                    </div>
+                )}
             </div>
 
-            <h1>{producto.nombre}</h1>
-            <p><strong>Modelo:</strong> {producto.modelo}</p>
-            <p><strong>Descripción:</strong> {producto.descripcion}</p>
-            <p><strong>Precio:</strong> ${producto.precio}</p>
-            <p><strong>Existencia:</strong> {producto.existencia}</p>
-            <p><strong>Tipo de corriente:</strong> {producto.tipo_corriente}</p>
+            <div className={styles.info}>
+                {producto.categoria && (
+                    <span className={styles.badgeCategoria}>{producto.categoria}</span>
+                )}
+
+                <h1 className={styles.nombre}>{producto.nombre}</h1>
+                <p className={styles.modelo}>Modelo: {producto.modelo}</p>
+
+                <p className={styles.descripcion}>{producto.descripcion}</p>
+
+                <div className={styles.precioRow}>
+                    <div className={styles.precioBox}>
+                        <span className={styles.precioLabel}>Precio</span>
+                        <span className={styles.precio}>${producto.precio}</span>
+                    </div>
+                    <span className={styles.stockBadge}>
+                        En stock: {producto.existencia} uds
+                    </span>
+                </div>
+
+                <div className={styles.detallesGrid}>
+                    <div className={styles.detalleItem}>
+                        <span className={styles.detalleLabel}>Existencia</span>
+                        <span className={styles.detalleValor}>{producto.existencia} unidades</span>
+                    </div>
+                    <div className={styles.detalleItem}>
+                        <span className={styles.detalleLabel}>Tipo de corriente</span>
+                        <span className={styles.detalleValor}>{producto.tipo_corriente}</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    );
+    </div>
+    </div>
+    
+);
 }
 
 export default Producto;

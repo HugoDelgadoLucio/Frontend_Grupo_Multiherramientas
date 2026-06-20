@@ -163,3 +163,9 @@
     color: #e63030;
     border-color: white;
 }
+
+small{
+ color: white;   
+ margin: 3px;
+ margin-top: 10px;
+}

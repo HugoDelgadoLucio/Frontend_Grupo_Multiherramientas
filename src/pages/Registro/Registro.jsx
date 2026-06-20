@@ -103,7 +103,7 @@ function Registro() {
                     <p className={styles.subtagline}>Crea tu <span>cuenta</span> y accede a nuestro catálogo</p>
 
                     <img
-                        src="/GirlMultiHerramientas.png"
+                        src="GirlMultiHerramientas.png"
                         alt="Img descripción"
                         className={styles.imgDerecha}
                     />

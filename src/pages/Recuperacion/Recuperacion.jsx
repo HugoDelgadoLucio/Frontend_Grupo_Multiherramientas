@@ -59,7 +59,7 @@ function Recuperacion() {
         <div className={styles.recuperarBox}>
 
             <img
-                src="/PasswordWonder.png"
+                src="PasswordWonder.png"
                 alt="Recuperar contraseña"
                 className={styles.recuperarImagen}
             />

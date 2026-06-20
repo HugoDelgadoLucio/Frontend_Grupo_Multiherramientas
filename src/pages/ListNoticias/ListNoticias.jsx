@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "./ListNoticias.module.css";
 
 function ListNoticias() {
     const navigate = useNavigate();
@@ -42,28 +43,32 @@ function ListNoticias() {
     }, []);
 
     return (
-        <div>
-            <h2>Catálogo de Noticias</h2>
+    <div className={styles.noticiasBase}>
+        <h2 className={styles.titulo}>Catálogo de Noticias</h2>
 
-            {loading && <p>Cargando noticias...</p>}
-            {error && <p>Error: {error}</p>}
+        {loading && <p>Cargando noticias...</p>}
+        {error && <p>Error: {error}</p>}
 
-            {!loading && !error && (
-                <div>
-                    {noticias.length === 0 ? (
-                        <p>No se encontraron noticias.</p>
-                    ) : (
-                        noticias.map(noticia => (
-                            <div key={noticia.id} onClick={() => navigate(`/noticias/${noticia.id}`)}>
-                                <h4>{noticia.titulo}</h4>
-                                <p>{noticia.contenido}</p>
-                            </div>
-                        ))
-                    )}
-                </div>
-            )}
-        </div>
-    );
+        {!loading && !error && (
+            <div className={styles.noticiasGrid}>
+                {noticias.length === 0 ? (
+                    <p>No se encontraron noticias.</p>
+                ) : (
+                    noticias.map(noticia => (
+                        <div
+                            className={styles.NoticiaCard}
+                            key={noticia.id}
+                            onClick={() => navigate(`/noticias/${noticia.id}`)}
+                        >
+                            <h4>{noticia.titulo}</h4>
+                            <p>{noticia.contenido}</p>
+                        </div>
+                    ))
+                )}
+            </div>
+        )}
+    </div>
+);
 }
 
 export default ListNoticias;

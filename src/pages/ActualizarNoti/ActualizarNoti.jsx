@@ -8,7 +8,7 @@ function ActualizarNoti() {
     const [error, setError] = useState(null);
     const [noticiaSeleccionada, setNoticiaSeleccionada] = useState(null);
 
-    const refTitulo    = useRef(null);
+    const refTitulo = useRef(null);
     const refContenido = useRef(null);
     const refImagenUrl = useRef(null);
     const refPublicada = useRef(null);
@@ -47,7 +47,7 @@ function ActualizarNoti() {
         setNoticiaSeleccionada(noticia);
         setTimeout(() => {
             if (refTitulo.current) refTitulo.current.value = noticia.titulo ?? "";
-            if (refContenido.current) refContenido.current.value = noticia.contenido  ?? "";
+            if (refContenido.current) refContenido.current.value = noticia.contenido ?? "";
             if (refImagenUrl.current) refImagenUrl.current.value = noticia.imagen_url ?? "";
             if (refPublicada.current) refPublicada.current.checked = noticia.publicada ?? false;
         }, 0);
@@ -63,11 +63,11 @@ function ActualizarNoti() {
         }
 
         const body = {
-            id:             noticiaSeleccionada.id,
-            titulo:         refTitulo.current.value,
-            contenido:      refContenido.current.value,
-            imagen_url:     refImagenUrl.current.value,
-            publicada:      refPublicada.current.checked,
+            id: noticiaSeleccionada.id,
+            titulo: refTitulo.current.value,
+            contenido: refContenido.current.value,
+            imagen_url: refImagenUrl.current.value,
+            publicada: refPublicada.current.checked,
             correo_usuario,
         };
 
@@ -97,67 +97,67 @@ function ActualizarNoti() {
     const cancelar = () => setNoticiaSeleccionada(null);
 
     if (loading) return <p>Cargando...</p>;
-    if (error)   return <p>{error}</p>;
+    if (error) return <p>{error}</p>;
 
     return (
         <div>
-             <h2 className={styles.titulo}>Actualizar Noticia</h2>
+            <h2 className={styles.titulo}>Actualizar Noticia</h2>
 
-        {/* Lista de noticias */}
-        {!noticiaSeleccionada && noticias.map(noticia => (
-            <div className={styles.NoticiaCard} key={noticia.id}>
-                <h4>{noticia.titulo}</h4>
-                <div className={styles.cardFooter}>
-                    <span
-                        className={
-                            noticia.publicada
-                                ? styles.estadoPublicada
-                                : styles.estadoBorrador
-                        }
-                    >
-                        {noticia.publicada ? "Publicada" : "No publicada"}
-                    </span>
-                    <button
-                        className={styles.btnEditar}
-                        onClick={() => seleccionar(noticia)}
-                    >
-                        Editar
-                    </button>
+            {/* Lista de noticias */}
+            {!noticiaSeleccionada && noticias.map(noticia => (
+                <div className={styles.NoticiaCard} key={noticia.id}>
+                    <h4>{noticia.titulo}</h4>
+                    <div className={styles.cardFooter}>
+                        <span
+                            className={
+                                noticia.publicada
+                                    ? styles.estadoPublicada
+                                    : styles.estadoBorrador
+                            }
+                        >
+                            {noticia.publicada ? "Publicada" : "No publicada"}
+                        </span>
+                        <button
+                            className={styles.btnEditar}
+                            onClick={() => seleccionar(noticia)}
+                        >
+                            Editar
+                        </button>
+                    </div>
                 </div>
-            </div>
-        ))}
+            ))}
 
             {/* Formulario */}
-{noticiaSeleccionada && (
-    <div className={styles.formCard}>
-        <h3 className={styles.formTitulo}>Editando: {noticiaSeleccionada.titulo}</h3>
+            {noticiaSeleccionada && (
+                <div className={styles.formCard}>
+                    <h3 className={styles.formTitulo}>Editando: {noticiaSeleccionada.titulo}</h3>
 
-        <div className={styles.field}>
-            <label className={styles.label}>Título</label>
-            <input className={styles.inputBase} ref={refTitulo} type="text" />
-        </div>
+                    <div className={styles.field}>
+                        <label className={styles.label}>Título</label>
+                        <input className={styles.inputBase} ref={refTitulo} type="text" />
+                    </div>
 
-        <div className={styles.field}>
-            <label className={styles.label}>Contenido</label>
-            <textarea className={styles.inputBase} ref={refContenido} rows={6} />
-        </div>
+                    <div className={styles.field}>
+                        <label className={styles.label}>Contenido</label>
+                        <textarea className={styles.inputBase} ref={refContenido} rows={6} />
+                    </div>
 
-        <div className={styles.field}>
-            <label className={styles.label}>URL de imagen</label>
-            <input className={styles.inputBase} ref={refImagenUrl} type="text" />
-        </div>
+                    <div className={styles.field}>
+                        <label className={styles.label}>URL de imagen</label>
+                        <input className={styles.inputBase} ref={refImagenUrl} type="text" />
+                    </div>
 
-        <div className={styles.checkboxRow}>
-            <input className={styles.checkbox} ref={refPublicada} type="checkbox" id="publicadaEdit" />
-            <label className={styles.checkboxLabel} htmlFor="publicadaEdit">Publicada</label>
-        </div>
+                    <div className={styles.checkboxRow}>
+                        <input className={styles.checkbox} ref={refPublicada} type="checkbox" id="publicadaEdit" />
+                        <label className={styles.checkboxLabel} htmlFor="publicadaEdit">Publicada</label>
+                    </div>
 
-        <div className={styles.btnRow}>
-            <button className={styles.btnGuardar} onClick={actualizar}>Guardar cambios</button>
-            <button className={styles.btnCancelar} onClick={cancelar}>Cancelar</button>
-        </div>
-    </div>
-)}
+                    <div className={styles.btnRow}>
+                        <button className={styles.btnGuardar} onClick={actualizar}>Guardar cambios</button>
+                        <button className={styles.btnCancelar} onClick={cancelar}>Cancelar</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

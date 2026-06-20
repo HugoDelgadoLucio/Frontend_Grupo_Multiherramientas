@@ -18,7 +18,7 @@ function ListNoticias() {
                 setError("");
 
                 //const response = await fetch( "http://localhost:3000/noticias/publicadas",
-                const response = await fetch( "https://backend-grupo-multiherramientas.onrender.com/noticias/publicadas",
+                const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/noticias/publicadas",
                     { signal: controller.signal }
                 );
 
@@ -43,32 +43,32 @@ function ListNoticias() {
     }, []);
 
     return (
-    <div className={styles.noticiasBase}>
-        <h2 className={styles.titulo}>Catálogo de Noticias</h2>
+        <div className={styles.noticiasBase}>
+            <h2 className={styles.titulo}>Catálogo de Noticias</h2>
 
-        {loading && <p>Cargando noticias...</p>}
-        {error && <p>Error: {error}</p>}
+            {loading && <p>Cargando noticias...</p>}
+            {error && <p>Error: {error}</p>}
 
-        {!loading && !error && (
-            <div className={styles.noticiasGrid}>
-                {noticias.length === 0 ? (
-                    <p>No se encontraron noticias.</p>
-                ) : (
-                    noticias.map(noticia => (
-                        <div
-                            className={styles.NoticiaCard}
-                            key={noticia.id}
-                            onClick={() => navigate(`/noticias/${noticia.id}`)}
-                        >
-                            <h4>{noticia.titulo}</h4>
-                            <p>{noticia.contenido}</p>
-                        </div>
-                    ))
-                )}
-            </div>
-        )}
-    </div>
-);
+            {!loading && !error && (
+                <div className={styles.noticiasGrid}>
+                    {noticias.length === 0 ? (
+                        <p>No se encontraron noticias.</p>
+                    ) : (
+                        noticias.map(noticia => (
+                            <div
+                                className={styles.NoticiaCard}
+                                key={noticia.id}
+                                onClick={() => navigate(`/noticias/${noticia.id}`)}
+                            >
+                                <h4>{noticia.titulo}</h4>
+                                <p>{noticia.contenido}</p>
+                            </div>
+                        ))
+                    )}
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default ListNoticias;

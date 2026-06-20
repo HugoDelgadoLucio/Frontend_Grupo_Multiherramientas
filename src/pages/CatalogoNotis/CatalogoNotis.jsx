@@ -45,33 +45,33 @@ function CatalogoNotis() {
     if (error) return <p>{error}</p>;
 
     return (
-    <div>
-        <h2 className={styles.titulo}>Catálogo de Noticias</h2>
+        <div>
+            <h2 className={styles.titulo}>Catálogo de Noticias</h2>
 
-        {noticias.map(noticia => (
-            <div
-                className={styles.NoticiaCard}
-                key={noticia.id}
-                onClick={() => navigate(`/noticias/${noticia.id}`)}
-            >
-                <h4>{noticia.titulo}</h4>
-                <p>{noticia.contenido}</p>
-                <div className={styles.cardFooter}>
-                    <span
-                        className={
-                            noticia.publicada
-                                ? styles.estadoPublicada
-                                : styles.estadoBorrador
-                        }
-                    >
-                        {noticia.publicada ? "Publicada" : "No publicada"}
-                    </span>
-                    <span className={styles.idTag}>ID: {noticia.id}</span>
+            {noticias.map(noticia => (
+                <div
+                    className={styles.NoticiaCard}
+                    key={noticia.id}
+                    onClick={() => navigate(`/noticias/${noticia.id}`)}
+                >
+                    <h4>{noticia.titulo}</h4>
+                    <p>{noticia.contenido}</p>
+                    <div className={styles.cardFooter}>
+                        <span
+                            className={
+                                noticia.publicada
+                                    ? styles.estadoPublicada
+                                    : styles.estadoBorrador
+                            }
+                        >
+                            {noticia.publicada ? "Publicada" : "No publicada"}
+                        </span>
+                        <span className={styles.idTag}>ID: {noticia.id}</span>
+                    </div>
                 </div>
-            </div>
-        ))}
-    </div>
-);
+            ))}
+        </div>
+    );
 }
 
 export default CatalogoNotis;

@@ -26,7 +26,7 @@ function EliminarProducto() {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${usuario.token}` // 👈 agrega este header
+                    "Authorization": `Bearer ${usuario.token}`
                 },
                 body: JSON.stringify({ id })
             });

@@ -40,7 +40,7 @@ function CambioContra() {
             const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/usuarios/changePassword", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token, contra })
+                body: JSON.stringify({ token, password: contra })
             });
 
             const data = await response.json();

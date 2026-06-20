@@ -11,51 +11,31 @@ return (
             <nav className={styles.adminNav}>
                 <NavLink
                     to="/admin/registrar"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkRegistrar}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkRegistrar}` : styles.navLink }
                 >
                     Registrar producto
                 </NavLink>
                 <NavLink
                     to="/admin/catalogo"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkCatalogo}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkCatalogo}` : styles.navLink }
                 >
                     Ver catálogo
                 </NavLink>
                 <NavLink
                     to="/admin/actualizar"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkActualizar}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkActualizar}` : styles.navLink }
                 >
                     Actualizar producto
                 </NavLink>
                 <NavLink
                     to="/admin/eliminar"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkEliminar}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkEliminar}` : styles.navLink }
                 >
                     Eliminar producto
                 </NavLink>
                 <NavLink
                     to="/admin/ubicacion"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkUbicacion}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkUbicacion}` : styles.navLink }
                 >
                     Buscar productos por ubicacion
                 </NavLink>
@@ -69,41 +49,25 @@ return (
             <nav className={styles.adminNav}>
                 <NavLink
                     to="/admin/registroNoticia"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkRegistroNoticia}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkRegistroNoticia}` : styles.navLink }
                 >
                     Publicar nueva noticia
                 </NavLink>
                 <NavLink
                     to="/admin/catalogoNoti"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkCatalogoNoti}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkCatalogoNoti}` : styles.navLink}
                 >
                     Ver noticias
                 </NavLink>
                 <NavLink
                     to="/admin/actualizarNoti"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkActualizarNoti}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkActualizarNoti}` : styles.navLink }
                 >
                     Actualizar noticia
                 </NavLink>
                 <NavLink
                     to="/admin/eliminarNoti"
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${styles.navLink} ${styles.navLinkEliminarNoti}`
-                            : styles.navLink
-                    }
+                    className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkEliminarNoti}` : styles.navLink }
                 >
                     Eliminar noticia
                 </NavLink>

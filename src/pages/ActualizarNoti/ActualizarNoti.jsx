@@ -85,7 +85,6 @@ function ActualizarNoti() {
             await Swal.fire({ icon: "success", title: "Noticia actualizada" });
             setNoticiaSeleccionada(null);
 
-            // Refrescar la lista sin recargar la página
             setNoticias(prev =>
                 prev.map(n => n.id === data.data.id ? data.data : n)
             );

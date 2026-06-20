@@ -37,6 +37,7 @@ function Recuperacion() {
                 return;
             }
             setMensaje("¡Correo enviado! Revisa tu bandeja de entrada.");
+            Swal.fire({ icon: "success", title: "Correo enviado", text: mensaje });
 
         } catch (err) {
             console.log(err);

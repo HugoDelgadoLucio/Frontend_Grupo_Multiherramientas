@@ -1,3 +1,177 @@
-.letra{
-    color: #000;
+.ProductBase {
+ width: 85%;  
+    max-width: 1100px;  
+    padding: 40px 40px;  
+    padding: 40px 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.ProductBase h2{
+    padding-bottom: 20px;
+}
+
+.ProductGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+    .ProductGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .ProductGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ProductCard {
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: solid 1px #ddd;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;    display: flex;
+    
+    flex-direction: column;
+box-shadow:
+        3px 3px 0 #1a2a4a,
+        6px 6px 0 #254a7e;
+}
+
+.ProductCard:hover {
+    border-color: #A61616;
+    box-shadow:
+        1px 1px 0 #A61616,
+        2px 2px 0 #e63030;
+}
+
+.cardTop {
+    min-height: 24px;
+    margin-bottom: 8px;
+}
+
+.badgeCategoria {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #254a7e;
+    background: rgba(37, 74, 126, 0.1);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.ProductCard h4 {
+    padding-left: 8px;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    border-left: 4px solid #1a2a4a;
+    line-height: 1.3;
+
+}
+
+
+
+.priceCard {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: white;
+    background: #1a2a4a;
+    width: fit-content;
+    padding: 4px 14px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProductCard p:not(.priceCard) {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    flex-grow: 1;
+    color: #6b7280;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.searchInput {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    background: #fff;
+    color: #1a2a4a;
+    box-shadow:
+        2px 2px 0 #1a2a4a,
+        4px 4px 0 #254a7e;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.searchInput::placeholder {
+    color: #9aa3b2;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #A61616;
+    box-shadow:
+        1px 1px 0 #A61616,
+        2px 2px 0 #e63030;
+    transform: translate(1px, 1px);
+}
+
+.filterBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 10px 4px;
+}
+
+.filterText {
+    font-size: 0.95rem;
+    color: #374151;
+    font-weight: bold;
+}
+
+.filterText strong {
+    color: #1a2a4a;
+}
+
+.clearFilterBtn {
+    background: #1a2a4a;
+    color: #fff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.clearFilterBtn:hover {
+    background: #e63030;
+}
+
+.clearFilterBtn:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+}
+
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }

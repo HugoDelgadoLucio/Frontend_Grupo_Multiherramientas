@@ -6,22 +6,26 @@ function Busqueda() {
     const resultados = state?.resultados ?? [];
 
     return (
-        <div>
-            <h2>Resultados de búsqueda</h2>
+    <div className={styles.ProductBase}>
+        <h2>Resultados de búsqueda</h2>
 
-            {resultados.length === 0 && <p>No se encontraron productos.</p>}
-
-            {resultados.map(producto => (
-                <Link to={`/productos/${producto.id}`} key={producto.id}>
-                    <div>
-                        <h4 className={styles.letra}>{producto.nombre}</h4>
-                        <p className={styles.letra}>{producto.modelo}</p>
-                        <p className={styles.letra}>${producto.precio}</p>
-                    </div>
-                </Link>
-            ))}
-        </div>
-    );
+        {resultados.length === 0 ? (
+            <p>No se encontraron productos.</p>
+        ) : (
+            <div className={styles.ProductGrid}>
+                {resultados.map(producto => (
+                    <Link to={`/productos/${producto.id}`} key={producto.id} className={styles.cardLink}>
+                        <div className={styles.ProductCard}>
+                            <h4>{producto.nombre}</h4>
+                            <p>{producto.modelo}</p>
+                            <p className={styles.priceCard}><strong>${producto.precio}</strong></p>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        )}
+    </div>
+);
 }
 
 export default Busqueda;

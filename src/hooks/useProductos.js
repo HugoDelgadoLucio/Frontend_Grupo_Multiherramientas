@@ -56,6 +56,7 @@ const useProductos = (categoriaFiltro = "", marcaFiltro = "", soloActivos = fals
                 setProductos(data.data);
 
             } catch (err) {
+                console.log(err);
                 if (err.name !== "AbortError") {
                     setError(err.message);
                 }

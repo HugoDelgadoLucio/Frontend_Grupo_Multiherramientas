@@ -45,7 +45,7 @@ function RegistrarProducto() {
             Swal.fire({ icon: "error", title: "Error", text: "La longitud del nombre no esta entre el rango especificado" });
             return;
         }
-        if (modelo.length < 5 || modelo.length > 100) {
+        if (modelo.length < 3 || modelo.length > 100) {
             Swal.fire({ icon: "error", title: "Error", text: "La longitud del modelo no esta entre el rango especificado" });
             return;
         }
@@ -159,7 +159,7 @@ function RegistrarProducto() {
 
                 <label className={styles.label}>Modelo</label>
                 <input className={styles.inputBase} ref={modeloRef} placeholder="Modelo" />
-                <small>El modelo debe contener entre 5 y 100 caracteres.</small>
+                <small>El modelo debe contener entre 3 y 100 caracteres.</small>
 
                 <label className={styles.label}>Descripción</label>
                 <textarea className={styles.inputBase} ref={descripcionRef} placeholder="Descripción del producto" />

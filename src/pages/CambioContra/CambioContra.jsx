@@ -3,8 +3,11 @@ import { useSearchParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styles from "./CambioContra.module.css";
 import FloatingBlobs from "../../components/FloatingBlobs/FloatingBlobs";
+import { useNavigate } from "react-router-dom";
 
 function CambioContra() {
+    const navigate = useNavigate();
+
     const [contra, setContra] = useState("");
     const [contConf, setContConf] = useState("");
     const [cargando, setCargando] = useState(false);
@@ -54,7 +57,7 @@ function CambioContra() {
                 title: "¡Listo!", 
                 text: "Tu contraseña fue cambiada correctamente" 
             }).then(() => {
-                window.location.href = "/Frontend_Grupo_Multiherramientas/#/login";
+                navigate("/login");
             });
 
         } catch (error) {

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./VerNoticia.module.css"; 
 import { NavLink } from "react-router-dom";
-
+import { FiImage } from "react-icons/fi";
 
 function VerNoticia() {
 
@@ -20,9 +20,8 @@ function VerNoticia() {
                 setLoading(true);
                 setError("");
 
-                const response = await fetch(
-                    `http://localhost:3000/noticias/${id}`
-                );
+                //const response = await fetch( `http://localhost:3000/noticias/${id}` );
+                const response = await fetch( `https://backend-grupo-multiherramientas.onrender.com/noticias/${id}` );
 
                 if (!response.ok) {
                     const errorData = await response.json();

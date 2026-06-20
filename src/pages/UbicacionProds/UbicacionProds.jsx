@@ -38,7 +38,8 @@ function UbicacionProds() {
         setBuscado(true);
 
         try {
-            const response = await fetch("http://localhost:3000/ubicaciones/productosPorUbicacion", {
+            //const response = await fetch("http://localhost:3000/ubicaciones/productosPorUbicacion", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/ubicaciones/productosPorUbicacion", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

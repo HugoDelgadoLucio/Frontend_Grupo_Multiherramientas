@@ -51,8 +51,8 @@ function EliminarNoti() {
         if (!confirmar.isConfirmed) return;
 
         try {
-
-            const response = await fetch("http://localhost:3000/noticias/eliminarNoticia", {
+            //const response = await fetch("http://localhost:3000/noticias/eliminarNoticia", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/noticias/eliminarNoticia", {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id })

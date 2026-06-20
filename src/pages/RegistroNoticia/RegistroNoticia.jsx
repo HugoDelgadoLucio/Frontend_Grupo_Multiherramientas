@@ -50,7 +50,8 @@ function RegistroNoticia() {
                 formData.append("imagen", archivo);
             }
 
-            const response = await fetch("http://localhost:3000/noticias",
+            //const response = await fetch("http://localhost:3000/noticias",
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/noticias",
                 {
                     method: "POST",
                     body: formData

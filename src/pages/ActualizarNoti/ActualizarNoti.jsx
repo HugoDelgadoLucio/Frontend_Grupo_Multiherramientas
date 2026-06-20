@@ -20,7 +20,8 @@ function ActualizarNoti() {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch("http://localhost:3000/noticias", {
+                //const response = await fetch("http://localhost:3000/noticias", {
+                const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/noticias", {
                     signal: controller.signal
                 });
                 if (!response.ok) {
@@ -71,7 +72,8 @@ function ActualizarNoti() {
         };
 
         try {
-            const response = await fetch("http://localhost:3000/noticias/actualizarNoticia", {
+            //const response = await fetch("http://localhost:3000/noticias/actualizarNoticia", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/noticias/actualizarNoticia", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)

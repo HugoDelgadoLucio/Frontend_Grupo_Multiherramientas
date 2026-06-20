@@ -17,8 +17,8 @@ function ListNoticias() {
                 setLoading(true);
                 setError("");
 
-                const response = await fetch(
-                    "http://localhost:3000/noticias/publicadas",
+                //const response = await fetch( "http://localhost:3000/noticias/publicadas",
+                const response = await fetch( "https://backend-grupo-multiherramientas.onrender.com/noticias/publicadas",
                     { signal: controller.signal }
                 );
 

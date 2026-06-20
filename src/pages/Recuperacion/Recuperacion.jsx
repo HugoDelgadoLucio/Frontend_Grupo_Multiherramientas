@@ -21,7 +21,8 @@ function Recuperacion() {
         setMensaje("Esto puede tardar un tiempo, sea paciente.");
 
         try {
-            const response = await fetch("http://localhost:3000/usuarios/recover", {
+            //const response = await fetch("http://localhost:3000/usuarios/recover", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/usuarios/recover", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

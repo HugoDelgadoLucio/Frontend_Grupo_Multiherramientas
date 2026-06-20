@@ -15,7 +15,8 @@ function BuscarProd() {
         setCargando(true);
 
         try {
-            const response = await fetch("http://localhost:3000/productos/buscar", {
+            //const response = await fetch("http://localhost:3000/productos/buscar", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos/buscar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ query })

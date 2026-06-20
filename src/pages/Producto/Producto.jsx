@@ -19,9 +19,8 @@ function Producto() {
                 setLoading(true);
                 setError("");
 
-                const response = await fetch(
-                    `http://localhost:3000/productos/${id}`
-                );
+                //const response = await fetch( `http://localhost:3000/productos/${id}` );
+                const response = await fetch( `https://backend-grupo-multiherramientas.onrender.com/productos/${id}` );
 
                 if (!response.ok) {
                     const errorData = await response.json();

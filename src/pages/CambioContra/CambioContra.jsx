@@ -36,7 +36,8 @@ function CambioContra() {
         setCargando(true);
 
         try {
-            const response = await fetch("http://localhost:3000/usuarios/changePassword", {
+            //const response = await fetch("http://localhost:3000/usuarios/changePassword", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/usuarios/changePassword", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, contra })
@@ -53,7 +54,7 @@ function CambioContra() {
                 title: "¡Listo!", 
                 text: "Tu contraseña fue cambiada correctamente" 
             }).then(() => {
-                window.location.href = "/login"; // redirige al login después de confirmar
+                window.location.href = "/login";
             });
 
         } catch (error) {

@@ -21,8 +21,8 @@ function EliminarProducto() {
         if (!confirmar.isConfirmed) return;
 
         try {
-
-            const response = await fetch("http://localhost:3000/productos/eliminarLogico", {
+            //const response = await fetch("http://localhost:3000/productos/eliminarLogico", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos/eliminarLogico", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import Swal from "sweetalert2";
 import useProductos from "../../hooks/useProductos";
-import { RiH2 } from "react-icons/ri";
 import styles from "./ActualizarProd.module.css";
 
 function ActualizarProd() {
@@ -23,18 +22,17 @@ function ActualizarProd() {
 
     const seleccionar = (producto) => {
         setProductoSeleccionado(producto);
-        // Pequeño delay para que los refs estén montados antes de asignar
         setTimeout(() => {
-            if (refNombre.current)        refNombre.current.value        = producto.nombre        ?? "";
-            if (refModelo.current)        refModelo.current.value        = producto.modelo        ?? "";
-            if (refDescripcion.current)   refDescripcion.current.value   = producto.descripcion   ?? "";
-            if (refPrecio.current)        refPrecio.current.value        = producto.precio        ?? "";
-            if (refExistencia.current)    refExistencia.current.value    = producto.existencia    ?? "";
-            if (refMarcaId.current)       refMarcaId.current.value       = producto.marca_id      ?? "";
-            if (refUbicacionId.current)   refUbicacionId.current.value   = producto.ubicacion_id  ?? "";
+            if (refNombre.current) refNombre.current.value = producto.nombre ?? "";
+            if (refModelo.current) refModelo.current.value = producto.modelo ?? "";
+            if (refDescripcion.current) refDescripcion.current.value = producto.descripcion ?? "";
+            if (refPrecio.current) refPrecio.current.value = producto.precio ?? "";
+            if (refExistencia.current) refExistencia.current.value = producto.existencia ?? "";
+            if (refMarcaId.current) refMarcaId.current.value = producto.marca_id ?? "";
+            if (refUbicacionId.current) refUbicacionId.current.value = producto.ubicacion_id ?? "";
             if (refTipoCorriente.current) refTipoCorriente.current.value = producto.tipo_corriente ?? "";
-            if (refCategoriaId.current)   refCategoriaId.current.value   = producto.categoria_id  ?? "";
-            if (refActivo.current)        refActivo.current.checked      = producto.activo        ?? true;
+            if (refCategoriaId.current) refCategoriaId.current.value = producto.categoria_id ?? "";
+            if (refActivo.current) refActivo.current.checked = producto.activo ?? true;
             if (refDescontinuado.current) refDescontinuado.current.checked = producto.descontinuado ?? false;
         }, 0);
     };
@@ -48,24 +46,24 @@ function ActualizarProd() {
             return;
         }
 
-        // Se toman los valores actuales de los inputs (hayan cambiado o no)
         const body = {
-            id:             productoSeleccionado.id,
-            nombre:         refNombre.current.value,
-            modelo:         refModelo.current.value,
-            descripcion:    refDescripcion.current.value,
-            precio:         Number(refPrecio.current.value),
-            existencia:     Number(refExistencia.current.value),
-            marca_id:       refMarcaId.current.value,
-            ubicacion_id:   refUbicacionId.current.value,
+            id: productoSeleccionado.id,
+            nombre: refNombre.current.value,
+            modelo: refModelo.current.value,
+            descripcion: refDescripcion.current.value,
+            precio: Number(refPrecio.current.value),
+            existencia: Number(refExistencia.current.value),
+            marca_id: refMarcaId.current.value,
+            ubicacion_id: refUbicacionId.current.value,
             tipo_corriente: refTipoCorriente.current.value,
-            categoria_id:   refCategoriaId.current.value,
-            activo:         refActivo.current.checked,
-            descontinuado:  refDescontinuado.current.checked,
+            categoria_id: refCategoriaId.current.value,
+            activo: refActivo.current.checked,
+            descontinuado: refDescontinuado.current.checked,
         };
 
         try {
-            const response = await fetch("http://localhost:3000/productos/updateProduct", {
+            //const response = await fetch("http://localhost:3000/productos/updateProduct", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos/updateProduct", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

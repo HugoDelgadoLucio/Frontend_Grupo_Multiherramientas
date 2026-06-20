@@ -99,7 +99,8 @@ function RegistrarProducto() {
                 );
             }
 
-            const response = await fetch("http://localhost:3000/productos", {
+            //const response = await fetch("http://localhost:3000/productos", {
+            const response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${usuario.token}`

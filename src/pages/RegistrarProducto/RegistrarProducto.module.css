@@ -120,3 +120,7 @@ textarea.inputBase {
 .inputFile::file-selector-button:hover {
     background: #e63030;
 }
+
+small{
+    color: black;
+}

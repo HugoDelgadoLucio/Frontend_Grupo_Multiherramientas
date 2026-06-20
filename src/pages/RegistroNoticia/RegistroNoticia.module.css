@@ -142,3 +142,7 @@ textarea.inputBase {
     cursor: pointer;
     margin: 0;
 }
+
+small{
+    color: black;
+}

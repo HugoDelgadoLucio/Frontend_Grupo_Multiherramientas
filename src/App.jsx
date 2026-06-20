@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 import HeaderWrapper from './components/HeaderWrapper/HeaderWrapper';
@@ -32,7 +32,7 @@ const UbicacionProds = lazy(() => import('./pages/UbicacionProds/UbicacionProds'
 function App() {
 	return (
 		<>
-			<BrowserRouter>
+			<HashRouter>
 				<HeaderWrapper />
 
 				<main>
@@ -70,7 +70,7 @@ function App() {
 				</main>
 
 				<Footer />
-			</BrowserRouter>
+			</HashRouter>
 		</>
 	);
 }

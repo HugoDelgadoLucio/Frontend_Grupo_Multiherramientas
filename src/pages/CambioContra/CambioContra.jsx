@@ -24,7 +24,7 @@ function CambioContra() {
         }
 
         if (contra.length < 8) {
-            Swal.fire({ icon: "error", title: "Error", text: "La contraseña debe tener al menos 8 caracteres" });
+            Swal.fire({ icon: "error", title: "Error", text: "La contraseña debe ser mínimo de 8 caracteres" });
             return;
         }
 

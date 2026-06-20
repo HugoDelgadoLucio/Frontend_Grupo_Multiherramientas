@@ -17,27 +17,31 @@ const useProductos = (categoriaFiltro = "", marcaFiltro = "", soloActivos = fals
 
                 if (soloActivos) {
                     response = await fetch(
-                        "http://localhost:3000/productos/activos",
+                        //"http://localhost:3000/productos/activos",
+                        "https://backend-grupo-multiherramientas.onrender.com/productos/activos",
                         {
                             signal: controller.signal
                         }
                     );
                 } else if (marcaFiltro) {
-                    response = await fetch("http://localhost:3000/productos/productosMarca", {
+                    //response = await fetch("http://localhost:3000/productos/productosMarca", {
+                    response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos/productosMarca", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ marca: marcaFiltro }),
                         signal: controller.signal
                     });
                 } else if (categoriaFiltro) {
-                    response = await fetch("http://localhost:3000/productos/productosCategoria", {
+                    //response = await fetch("http://localhost:3000/productos/productosCategoria", {
+                    response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos/productosCategoria", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ categoria: categoriaFiltro }),
                         signal: controller.signal
                     });
                 } else {
-                    response = await fetch("http://localhost:3000/productos", {
+                    //response = await fetch("http://localhost:3000/productos", {
+                    response = await fetch("https://backend-grupo-multiherramientas.onrender.com/productos", {
                         signal: controller.signal
                     });
                 }
